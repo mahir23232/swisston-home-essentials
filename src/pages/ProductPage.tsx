@@ -99,20 +99,46 @@ const ProductPage = () => {
           <h1 className="font-serif text-4xl md:text-5xl leading-[1.05]">{product.name}</h1>
           <p className="mt-3 text-foreground/70 italic font-serif text-lg">{product.tagline}</p>
 
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <span className="text-2xl font-light tracking-wide">{product.price}</span>
             <span className="hairline" />
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <span className="ml-2 tracking-wide">Trusted by Amazon customers</span>
-            </span>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex items-center gap-0.5 text-accent">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className={cn(
+                      "h-3.5 w-3.5",
+                      i < Math.round(product.manualRating ?? 5) ? "fill-current" : "fill-current opacity-25"
+                    )}
+                    strokeWidth={0}
+                  />
+                ))}
+              </div>
+              {product.manualRating ? (
+                <span className="tracking-wide">
+                  {product.manualRating.toFixed(1)}
+                  {product.manualReviewCount ? ` · ${product.manualReviewCount.toLocaleString()} reviews` : ""}
+                </span>
+              ) : (
+                <span className="tracking-wide">Trusted by Amazon customers</span>
+              )}
+            </div>
           </div>
 
           <p className="mt-8 text-foreground/80 leading-relaxed">{product.summary}</p>
+
+          {/* Highlights */}
+          {product.highlights && product.highlights.length > 0 && (
+            <ul className="mt-6 space-y-2.5">
+              {product.highlights.map((h) => (
+                <li key={h} className="flex items-start gap-3 text-sm">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                  <span className="text-foreground/85 leading-relaxed">{h}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {/* Quantity + CTA */}
           <div className="mt-10 flex items-stretch gap-3">
