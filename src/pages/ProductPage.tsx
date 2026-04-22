@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowRight, Minus, Plus, ShieldCheck, Truck, RefreshCw, Star, ChevronRight } from "lucide-react";
+import { ArrowRight, Minus, Plus, ShieldCheck, Truck, RefreshCw, Star, ChevronRight, ChevronLeft } from "lucide-react";
 import { getProduct, products } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { cn } from "@/lib/utils";
@@ -43,29 +43,50 @@ const ProductPage = () => {
 
       {/* Gallery + Info */}
       <section className="container py-12 md:py-16 grid md:grid-cols-12 gap-10 md:gap-16">
-        {/* Gallery */}
+        {/* Gallery — supports unlimited images */}
         <div className="md:col-span-7 md:sticky md:top-28 md:self-start">
-          <div className="bg-secondary aspect-[4/5] mb-4 overflow-hidden">
+          <div className="relative bg-secondary aspect-[4/5] mb-4 overflow-hidden group">
             <img
               src={product.images[active]}
-              alt={product.name}
+              alt={`${product.name} — view ${active + 1}`}
               className="w-full h-full object-contain p-10 fade-in"
               key={active}
             />
+            {product.images.length > 1 && (
+              <>
+                <button
+                  onClick={() => setActive((a) => (a - 1 + product.images.length) % product.images.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => setActive((a) => (a + 1) % product.images.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                <span className="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.2em] bg-background/70 backdrop-blur px-2 py-1 text-muted-foreground">
+                  {active + 1} / {product.images.length}
+                </span>
+              </>
+            )}
           </div>
           {product.images.length > 1 && (
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {product.images.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
                   className={cn(
-                    "aspect-square bg-secondary overflow-hidden border transition-all",
-                    active === i ? "border-foreground" : "border-transparent hover:border-foreground/30"
+                    "aspect-square bg-secondary overflow-hidden border-2 transition-all",
+                    active === i ? "border-foreground" : "border-transparent hover:border-foreground/30 opacity-70 hover:opacity-100"
                   )}
                   aria-label={`View image ${i + 1}`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-contain p-3" loading="lazy" />
+                  <img src={img} alt="" className="w-full h-full object-contain p-2" loading="lazy" />
                 </button>
               ))}
             </div>
