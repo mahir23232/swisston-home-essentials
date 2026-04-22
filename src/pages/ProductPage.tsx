@@ -234,6 +234,33 @@ const ProductPage = () => {
         </div>
       </section>
 
+      {/* Long-form description — editorial */}
+      {product.description && product.description.length > 0 && (
+        <section className="bg-secondary/30 border-y border-border/60">
+          <div className="container py-24 md:py-32 grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-4">
+              <p className="eyebrow mb-3">The Story</p>
+              <h2 className="font-serif text-3xl md:text-4xl leading-tight">
+                Designed with intention.
+              </h2>
+            </div>
+            <div className="md:col-span-7 md:col-start-6 space-y-6">
+              {product.description.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className={cn(
+                    "leading-relaxed text-foreground/80",
+                    i === 0 ? "text-lg md:text-xl font-serif text-foreground/90" : "text-base"
+                  )}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Reviews */}
       <section className="bg-secondary/40 border-y border-border/60">
         <div className="container py-24">
