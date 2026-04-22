@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowRight, Minus, Plus, ShieldCheck, Truck, RefreshCw, Star, ChevronRight } from "lucide-react";
+import { ArrowRight, Minus, Plus, ShieldCheck, Truck, RefreshCw, Star, ChevronRight, ChevronLeft } from "lucide-react";
 import { getProduct, products } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { cn } from "@/lib/utils";
@@ -43,29 +43,50 @@ const ProductPage = () => {
 
       {/* Gallery + Info */}
       <section className="container py-12 md:py-16 grid md:grid-cols-12 gap-10 md:gap-16">
-        {/* Gallery */}
+        {/* Gallery — supports unlimited images */}
         <div className="md:col-span-7 md:sticky md:top-28 md:self-start">
-          <div className="bg-secondary aspect-[4/5] mb-4 overflow-hidden">
+          <div className="relative bg-secondary aspect-[4/5] mb-4 overflow-hidden group">
             <img
               src={product.images[active]}
-              alt={product.name}
+              alt={`${product.name} — view ${active + 1}`}
               className="w-full h-full object-contain p-10 fade-in"
               key={active}
             />
+            {product.images.length > 1 && (
+              <>
+                <button
+                  onClick={() => setActive((a) => (a - 1 + product.images.length) % product.images.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => setActive((a) => (a + 1) % product.images.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                <span className="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.2em] bg-background/70 backdrop-blur px-2 py-1 text-muted-foreground">
+                  {active + 1} / {product.images.length}
+                </span>
+              </>
+            )}
           </div>
           {product.images.length > 1 && (
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {product.images.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
                   className={cn(
-                    "aspect-square bg-secondary overflow-hidden border transition-all",
-                    active === i ? "border-foreground" : "border-transparent hover:border-foreground/30"
+                    "aspect-square bg-secondary overflow-hidden border-2 transition-all",
+                    active === i ? "border-foreground" : "border-transparent hover:border-foreground/30 opacity-70 hover:opacity-100"
                   )}
                   aria-label={`View image ${i + 1}`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-contain p-3" loading="lazy" />
+                  <img src={img} alt="" className="w-full h-full object-contain p-2" loading="lazy" />
                 </button>
               ))}
             </div>
@@ -78,20 +99,46 @@ const ProductPage = () => {
           <h1 className="font-serif text-4xl md:text-5xl leading-[1.05]">{product.name}</h1>
           <p className="mt-3 text-foreground/70 italic font-serif text-lg">{product.tagline}</p>
 
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <span className="text-2xl font-light tracking-wide">{product.price}</span>
             <span className="hairline" />
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <Star className="h-3 w-3 fill-accent text-accent" strokeWidth={0} />
-              <span className="ml-2 tracking-wide">Trusted by Amazon customers</span>
-            </span>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex items-center gap-0.5 text-accent">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className={cn(
+                      "h-3.5 w-3.5",
+                      i < Math.round(product.manualRating ?? 5) ? "fill-current" : "fill-current opacity-25"
+                    )}
+                    strokeWidth={0}
+                  />
+                ))}
+              </div>
+              {product.manualRating ? (
+                <span className="tracking-wide">
+                  {product.manualRating.toFixed(1)}
+                  {product.manualReviewCount ? ` · ${product.manualReviewCount.toLocaleString()} reviews` : ""}
+                </span>
+              ) : (
+                <span className="tracking-wide">Trusted by Amazon customers</span>
+              )}
+            </div>
           </div>
 
           <p className="mt-8 text-foreground/80 leading-relaxed">{product.summary}</p>
+
+          {/* Highlights */}
+          {product.highlights && product.highlights.length > 0 && (
+            <ul className="mt-6 space-y-2.5">
+              {product.highlights.map((h) => (
+                <li key={h} className="flex items-start gap-3 text-sm">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                  <span className="text-foreground/85 leading-relaxed">{h}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {/* Quantity + CTA */}
           <div className="mt-10 flex items-stretch gap-3">
@@ -186,6 +233,33 @@ const ProductPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Long-form description — editorial */}
+      {product.description && product.description.length > 0 && (
+        <section className="bg-secondary/30 border-y border-border/60">
+          <div className="container py-24 md:py-32 grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-4">
+              <p className="eyebrow mb-3">The Story</p>
+              <h2 className="font-serif text-3xl md:text-4xl leading-tight">
+                Designed with intention.
+              </h2>
+            </div>
+            <div className="md:col-span-7 md:col-start-6 space-y-6">
+              {product.description.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className={cn(
+                    "leading-relaxed text-foreground/80",
+                    i === 0 ? "text-lg md:text-xl font-serif text-foreground/90" : "text-base"
+                  )}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Reviews */}
       <section className="bg-secondary/40 border-y border-border/60">
