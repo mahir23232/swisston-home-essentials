@@ -1,30 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Sparkles, Truck, Heart, Star, Award, PackageCheck } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import { ArrowRight, ShieldCheck, Sparkles, Truck, Heart, Star } from "lucide-react";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import heroImg from "@/assets/hero-lifestyle.jpg";
 import lifestyle1 from "@/assets/lifestyle-1.jpg";
 import lifestyle2 from "@/assets/lifestyle-2.jpg";
 import detailCream from "@/assets/detail-cream.jpg";
-import ritualCoffee from "@/assets/ritual-coffee.jpg";
-import ritualCooking from "@/assets/ritual-cooking.jpg";
-import bundleImg from "@/assets/bundle-collection.jpg";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-
-  const onSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Please enter a valid email.");
-      return;
-    }
-    setEmail("");
-    toast.success("Welcome to Swisston. Check your inbox shortly.");
-  };
-
   return (
     <>
       {/* HERO */}
@@ -47,8 +30,8 @@ const Index = () => {
               <em className="not-italic text-foreground/80">crafted for everyday living.</em>
             </h1>
             <p className="mt-8 text-base md:text-lg text-foreground/70 max-w-lg leading-relaxed">
-              Quietly dependable home and kitchen pieces — built with intention,
-              designed for the rituals that shape a more considered life.
+              Premium home and kitchen pieces designed with quiet confidence —
+              where elegance meets the practical rituals of the modern home.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
               <Link
@@ -112,89 +95,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* RITUAL · MORNING (Cream Whipper) */}
-      <section className="bg-background">
-        <div className="container py-28 md:py-36 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-          <div className="md:col-span-6 order-2 md:order-1">
-            <p className="eyebrow mb-4">The Morning Ritual</p>
-            <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] max-w-md">
-              Café-quality, quietly at home.
-            </h2>
-            <div className="hairline my-8" />
-            <p className="text-base md:text-lg text-foreground/75 leading-relaxed max-w-lg">
-              The first cup of the day deserves more than convenience. Our cream whipper
-              brings the precision of a professional bar to your counter — silken texture,
-              clean finish, and the small luxury of a moment made beautifully.
-            </p>
-            <ul className="mt-8 space-y-3 text-sm text-foreground/80 max-w-md">
-              {[
-                "Restaurant-quality cream in under thirty seconds",
-                "Heavy-gauge stainless steel — built to outlast trends",
-                "A piece worth leaving on the counter",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-2 h-px w-5 bg-accent shrink-0" />
-                  <span className="leading-relaxed">{b}</span>
-                </li>
-              ))}
-            </ul>
-            <Link
-              to="/product/professional-cream-whipper-500ml"
-              className="mt-10 inline-flex items-center gap-3 link-elegant text-xs uppercase tracking-[0.22em]"
-            >
-              Discover the Whipper <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-          <div className="md:col-span-6 order-1 md:order-2">
-            <img
-              src={ritualCoffee}
-              alt="Morning coffee with Swisston cream whipper on warm oak countertop"
-              loading="lazy"
-              className="w-full aspect-[4/5] object-cover shadow-elegant"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* RITUAL · COOKING (Chicken Shredder) */}
+      {/* BRAND STORY */}
       <section className="stone-bg">
-        <div className="container py-28 md:py-36 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-          <div className="md:col-span-6">
+        <div className="container py-28 md:py-40 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+          <div className="md:col-span-5">
             <img
-              src={ritualCooking}
-              alt="Premium chicken shredder in a refined kitchen"
+              src={lifestyle2}
+              alt="Modern kitchen with marble island"
               loading="lazy"
               className="w-full aspect-[4/5] object-cover shadow-elegant"
             />
           </div>
-          <div className="md:col-span-6">
-            <p className="eyebrow mb-4">The Cooking Ritual</p>
-            <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] max-w-md">
-              Effortless control, every time.
+          <div className="md:col-span-7">
+            <p className="eyebrow mb-4">Our Story</p>
+            <h2 className="font-serif text-4xl md:text-5xl leading-tight max-w-xl">
+              A quieter kind of luxury — built for the everyday.
             </h2>
             <div className="hairline my-8" />
-            <p className="text-base md:text-lg text-foreground/75 leading-relaxed max-w-lg">
-              Built for those who cook with care. Clean motion, consistent results, and
-              the quiet satisfaction of a tool that simply works — meal after meal,
-              without thought or compromise.
+            <p className="text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
+              Swisston Home & Kitchen USA was founded on a simple belief: the objects we use
+              every day deserve the same care and intention as the spaces they live in.
             </p>
-            <ul className="mt-8 space-y-3 text-sm text-foreground/80 max-w-md">
-              {[
-                "Perfectly shredded results in seconds",
-                "Reinforced steel mechanism — engineered for daily use",
-                "Designed to make weekday cooking feel considered",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-2 h-px w-5 bg-accent shrink-0" />
-                  <span className="leading-relaxed">{b}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-6 text-foreground/70 leading-relaxed max-w-xl">
+              Each piece is considered — from the materials we choose to the way it feels in your hand.
+              We design for the modern home: refined, dependable, and made to last beyond passing trends.
+            </p>
             <Link
-              to="/shop"
+              to="/about"
               className="mt-10 inline-flex items-center gap-3 link-elegant text-xs uppercase tracking-[0.22em]"
             >
-              Explore Kitchen Tools <ArrowRight className="h-3.5 w-3.5" />
+              Read Our Story <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
@@ -233,59 +163,6 @@ const Index = () => {
               <p className="text-sm text-muted-foreground leading-relaxed">{b.body}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* COMPLETE YOUR KITCHEN — bundle / AOV */}
-      <section className="relative overflow-hidden border-y border-border/60">
-        <div className="grid md:grid-cols-2">
-          <div className="relative min-h-[420px] md:min-h-[600px]">
-            <img
-              src={bundleImg}
-              alt="The Swisston kitchen collection on a marble counter"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-          <div className="bg-secondary/60 px-8 md:px-16 py-20 md:py-32 flex flex-col justify-center">
-            <p className="eyebrow mb-4">Complete Your Kitchen</p>
-            <h2 className="font-serif text-4xl md:text-5xl leading-[1.05] max-w-md">
-              Build a kitchen that feels considered.
-            </h2>
-            <div className="hairline my-8" />
-            <p className="text-foreground/75 leading-relaxed max-w-md">
-              Each Swisston piece is designed to live alongside the next — a quiet
-              system of tools that elevate the everyday. Begin with one. Build the rest
-              over time.
-            </p>
-            <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
-              {products.slice(0, 3).map((p) => (
-                <Link
-                  key={p.id}
-                  to={`/product/${p.slug}`}
-                  className="group block"
-                >
-                  <div className="aspect-square bg-background overflow-hidden">
-                    <img
-                      src={p.images[0]}
-                      alt={p.name}
-                      loading="lazy"
-                      className="w-full h-full object-contain p-3 transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground group-hover:text-foreground transition-colors leading-tight">
-                    {p.category}
-                  </p>
-                </Link>
-              ))}
-            </div>
-            <Link
-              to="/shop"
-              className="mt-10 inline-flex items-center gap-3 self-start bg-foreground text-background px-8 py-4 text-xs uppercase tracking-[0.22em] font-light hover:bg-foreground/90 transition-colors"
-            >
-              Explore the Full Collection <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -363,85 +240,13 @@ const Index = () => {
                   ))}
                 </div>
                 <blockquote className="font-serif text-xl leading-snug text-foreground/90">
-                  "{t.quote}"
+                  “{t.quote}”
                 </blockquote>
                 <figcaption className="mt-8 text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   {t.name} · {t.place}
                 </figcaption>
               </figure>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GUARANTEES STRIP */}
-      <section className="bg-background border-b border-border/60">
-        <div className="container py-16 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-          {[
-            {
-              icon: Award,
-              title: "The Swisston Standard",
-              body: "Every piece is built with materials chosen to endure — tested against the demands of daily use.",
-            },
-            {
-              icon: PackageCheck,
-              title: "Effortless Returns",
-              body: "Backed by Amazon's trusted return policy. If it isn't right, return it without question.",
-            },
-            {
-              icon: Truck,
-              title: "Fulfilled with Care",
-              body: "Shipped through Amazon's fulfillment network — fast, tracked, and Prime-eligible.",
-            },
-          ].map((g) => (
-            <div key={g.title} className="flex gap-5 items-start">
-              <g.icon className="h-6 w-6 text-accent shrink-0 mt-1" strokeWidth={1.25} />
-              <div>
-                <p className="text-sm font-medium tracking-wide mb-2">{g.title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{g.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* NEWSLETTER — refined retention */}
-      <section className="bg-secondary/40">
-        <div className="container py-24 md:py-32">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="eyebrow mb-5">The Journal</p>
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.1]">
-              A quieter inbox. A more considered home.
-            </h2>
-            <p className="mt-6 text-foreground/70 leading-relaxed max-w-lg mx-auto">
-              Receive new arrivals, thoughtful essays on the home, and private offers —
-              shared sparingly, never in excess.
-            </p>
-            <form
-              onSubmit={onSubscribe}
-              className="mt-10 flex max-w-md mx-auto border-b border-foreground/40 focus-within:border-foreground transition-colors"
-            >
-              <label htmlFor="hero-email" className="sr-only">Email address</label>
-              <input
-                id="hero-email"
-                type="email"
-                required
-                maxLength={255}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                className="flex-1 bg-transparent py-3 text-sm placeholder:text-muted-foreground focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="text-xs uppercase tracking-[0.22em] font-light pl-4 text-foreground hover:text-accent transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="mt-4 text-xs text-muted-foreground tracking-wide">
-              No noise. Unsubscribe anytime.
-            </p>
           </div>
         </div>
       </section>
