@@ -7,14 +7,14 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: { DEFAULT: "1.5rem", lg: "2.5rem" },
-      screens: { "2xl": "1480px" },
+      padding: { DEFAULT: "1.5rem", lg: "3rem" },
+      screens: { "2xl": "1560px" },
     },
     extend: {
       fontFamily: {
-        display: ['Fraunces', 'Times New Roman', 'serif'],
-        serif:   ['Fraunces', 'Times New Roman', 'serif'],
-        sans:    ['"Inter Tight"', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Spectral', 'Times New Roman', 'serif'],
+        serif:   ['Spectral', 'Times New Roman', 'serif'],
+        sans:    ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
@@ -31,18 +31,16 @@ export default {
         popover:     { DEFAULT: "hsl(var(--popover))",     foreground: "hsl(var(--popover-foreground))" },
         card:        { DEFAULT: "hsl(var(--card))",        foreground: "hsl(var(--card-foreground))" },
 
-        bone:       "hsl(var(--bone))",
-        ivory:      "hsl(var(--ivory))",
-        travertine: "hsl(var(--travertine))",
-        oat:        "hsl(var(--oat))",
-        linen:      "hsl(var(--linen))",
-        oak:        "hsl(var(--oak))",
-        clay:       "hsl(var(--clay))",
-        ink:        "hsl(var(--ink))",
-        char:       "hsl(var(--char))",
-        brass:      "hsl(var(--brass))",
-        "brass-soft": "hsl(var(--brass-soft))",
-        sage:       "hsl(var(--sage))",
+        obsidian: "hsl(var(--obsidian))",
+        pitch:    "hsl(var(--pitch))",
+        graphite: "hsl(var(--graphite))",
+        char:     "hsl(var(--char))",
+        ash:      "hsl(var(--ash))",
+        pewter:   "hsl(var(--pewter))",
+        bone:     "hsl(var(--bone))",
+        ivory:    "hsl(var(--ivory))",
+        ember:    "hsl(var(--ember))",
+        "ember-deep": "hsl(var(--ember-deep))",
 
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -56,15 +54,13 @@ export default {
         },
       },
       backgroundImage: {
-        "gradient-paper": "var(--gradient-paper)",
-        "gradient-stone": "var(--gradient-stone)",
-        "gradient-ink":   "var(--gradient-ink)",
-        "gradient-brass": "var(--gradient-brass)",
+        "gradient-pitch": "var(--gradient-pitch)",
+        "gradient-ember": "var(--gradient-ember)",
+        "gradient-veil":  "var(--gradient-veil)",
       },
       boxShadow: {
-        paper: "var(--shadow-paper)",
-        soft:  "var(--shadow-soft)",
-        deep:  "var(--shadow-deep)",
+        cast: "var(--shadow-cast)",
+        edge: "var(--shadow-edge)",
       },
       borderRadius: {
         lg: "var(--radius)",
