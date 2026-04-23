@@ -1,29 +1,24 @@
 import productHero from "@/assets/product-2.png";
 import productSpec from "@/assets/product-1.png";
-import lifestyle1 from "@/assets/lifestyle-1.jpg";
-import lifestyle2 from "@/assets/lifestyle-2.jpg";
+import productPortrait from "@/assets/product-portrait.jpg";
+import ritualMorning from "@/assets/ritual-morning.jpg";
+import ritualPrep from "@/assets/ritual-prep.jpg";
 import detailCream from "@/assets/detail-cream.jpg";
+import dining from "@/assets/dining-scene.jpg";
 
 /**
  * ─────────────────────────────────────────────────────────────────────
- *  SWISSTON PRODUCT CATALOG
+ *  SWISSTON · PRODUCT CATALOG
  * ─────────────────────────────────────────────────────────────────────
- *  This is the single source of truth for every product on the site.
- *  Edit this file to update content — no other files need to change.
+ *  Single source of truth. Editing this file updates the entire site.
  *
- *  HOW TO EDIT:
- *  • images[]           — add up to 6 images (first one = main card image)
- *  • amazonUrl          — paste your Amazon listing URL
- *  • amazonAsin         — optional, used later for live rating sync
- *  • description        — long-form product story (multi-paragraph)
- *  • highlights[]       — 3–5 short "what makes it different" points
- *  • features[]         — bullet specs shown on product page
- *  • All other fields are self-explanatory
- *
- *  TO ADD A NEW IMAGE:
- *  1. Place the file in src/assets/
- *  2. Import it at the top of this file (see imports above)
+ *  TO ADD AN IMAGE
+ *  1. Drop file in src/assets/
+ *  2. Import at top of this file
  *  3. Add it to the product's `images: [...]` array
+ *
+ *  TO POINT TO AMAZON
+ *  Replace `amazonUrl` with the full listing URL.
  * ─────────────────────────────────────────────────────────────────────
  */
 
@@ -33,87 +28,87 @@ export type Product = {
   name: string;
   tagline: string;
   category: string;
+  collection: string;        // e.g. "The Morning Ritual"
   price: string;
+  ritualLine: string;        // a single editorial sentence used on cards & PDP
 
-  // Amazon
-  amazonUrl: string;          // ← paste full Amazon listing URL
-  amazonAsin?: string;        // ← optional, e.g. "B0CXXXXXXX" (for live rating sync later)
+  amazonUrl: string;
+  amazonAsin?: string;
 
-  // Media — up to 6 images recommended
   images: string[];
 
-  // Copy
-  summary: string;            // short intro paragraph
-  description: string[];      // long-form, each entry = one paragraph
-  highlights: string[];       // 3–5 short headline benefits
+  summary: string;
+  description: string[];
+  highlights: string[];
 
-  // Specs
   features: string[];
   materials: string;
   dimensions: string;
   capacity: string;
   inBox: string[];
 
-  // Optional manually-set rating (used until live sync is wired)
-  manualRating?: number;      // e.g. 4.7
-  manualReviewCount?: number; // e.g. 1284
+  manualRating?: number;
+  manualReviewCount?: number;
 };
 
 export const products: Product[] = [
   {
     id: "p1",
     slug: "professional-cream-whipper-500ml",
-    name: "Professional Cream Whipper",
-    tagline: "Crafted for the modern kitchen.",
-    category: "Kitchen Essentials",
-    price: "$49.00",
+    name: "The Whipper, N°01",
+    tagline: "A morning ritual, perfected.",
+    category: "Kitchen Atelier",
+    collection: "The Morning Ritual",
+    price: "$49",
+    ritualLine: "For the cup of coffee that becomes a small daily ceremony.",
 
-    amazonUrl: "#", // ← REPLACE with your Amazon listing URL
-    amazonAsin: "", // ← Optional: paste the ASIN (10-char product ID)
+    amazonUrl: "#",
+    amazonAsin: "",
 
     images: [
+      productPortrait,
       productHero,
-      lifestyle1,
+      ritualMorning,
       productSpec,
       detailCream,
-      lifestyle2,
-      // Add more images here — up to 6 recommended
+      dining,
     ],
 
     summary:
-      "A precision-engineered whipper that turns fresh cream into silken peaks in seconds. Designed in matte black stainless steel, built for everyday excellence.",
+      "A precision-built cream whipper in matte ink, weighted to feel inevitable in the hand. Built for the slow, considered rituals that shape a beautiful morning.",
 
     description: [
-      "The Swisston Professional Cream Whipper is built for those who treat the kitchen as a craft. Each unit is precision-machined from heavy-gauge stainless steel and finished by hand, designed to feel as considered in your grip as it looks on your counter.",
-      "From morning coffee to weekend entertaining, it transforms fresh cream, mousses, and infusions into restaurant-quality results in seconds — with a clean, dependable mechanism that performs the same way on the thousandth use as it did on the first.",
-      "Replace the description in src/data/products.ts with your own copy whenever you're ready. Each paragraph here renders independently for a clean editorial layout.",
+      "Some objects belong in a drawer. Others earn a place on the counter. The Whipper, N°01 is built for the second category — a sculptural piece of kitchen equipment, weighted with intention, finished by hand.",
+      "It transforms cold cream into restaurant-grade peaks in seconds. Espresso becomes a quiet ceremony. A weekend brunch becomes something worth photographing. The mechanism is reinforced, the seal is medical-grade, and the body is heavy-gauge stainless — engineered to perform identically on the thousandth use as on the first.",
+      "Designed in our Texas studio, finished to a matte ink that grows more beautiful with age. Made for the kind of kitchen where small things are taken seriously.",
     ],
 
     highlights: [
-      "Heavy-gauge stainless steel construction",
-      "Restaurant-quality results in under 30 seconds",
-      "Three professional decorating tips included",
-      "Engineered for years of daily use",
+      "Hand-finished matte ink stainless body",
+      "Restaurant-grade peaks in under thirty seconds",
+      "Three precision-machined decorating tips included",
+      "Built for daily use over decades, not seasons",
     ],
 
     features: [
-      "Heavy-gauge stainless steel construction",
-      "0.5L capacity — ideal for home and entertaining",
-      "Three professional stainless tips included",
-      "Non-slip grip with ergonomic lever",
+      "Heavy-gauge 304 stainless steel construction",
+      "0.5L capacity — service for four to six",
+      "Three precision-machined stainless tips",
+      "Reinforced lever with non-slip ergonomic grip",
+      "Medical-grade silicone head seal",
       "Dishwasher-safe components",
       "Compatible with standard N₂O chargers (sold separately)",
     ],
-    materials: "Brushed stainless steel · Food-grade silicone seal",
-    dimensions: "31.5 cm (H) × 8.2 cm (Ø)",
-    capacity: "0.5 Litre",
+    materials: "Matte ink stainless steel · Food-grade silicone",
+    dimensions: "31.5 cm (h) · 8.2 cm (Ø)",
+    capacity: "0.5 L",
     inBox: [
-      "Cream Whipper Body",
-      "Charger Holder",
-      "3 × Stainless Steel Decorating Tips",
-      "Dust Cap",
-      "Cleaning Brush",
-      "Instruction Booklet",
+      "Whipper body",
+      "Charger holder",
+      "Three stainless decorating tips",
+      "Dust cap",
+      "Cleaning brush",
+      "Linen-bound use guide",
     ],
 
     manualRating: 4.8,
@@ -123,51 +118,53 @@ export const products: Product[] = [
   {
     id: "p2",
     slug: "artisan-cream-whipper-ivory",
-    name: "Artisan Cream Whipper — Ivory",
-    tagline: "Quiet luxury for the everyday host.",
-    category: "Kitchen Essentials",
-    price: "$54.00",
+    name: "The Whipper, N°02 — Ivory",
+    tagline: "The same instrument, in a quieter voice.",
+    category: "Kitchen Atelier",
+    collection: "The Morning Ritual",
+    price: "$54",
+    ritualLine: "A softer counterpart for kitchens cast in bone, oak, and light.",
 
     amazonUrl: "#",
     amazonAsin: "",
 
     images: [
       productHero,
-      lifestyle1,
-      lifestyle2,
+      ritualMorning,
+      dining,
       detailCream,
     ],
 
     summary:
-      "A refined edition of our signature whipper, finished in soft ivory. Designed to feel as beautiful on the counter as it does in the hand.",
+      "The flagship whipper, finished by hand in soft ivory. A quieter object for kitchens of stone, oak, and light.",
 
     description: [
-      "Replace this description with your own product story. Each item in the array becomes one paragraph on the product page.",
-      "The Ivory edition is finished in a hand-applied powder coating that gives the whipper a soft, matte texture — beautiful enough to live on your counter, refined enough to feel like a piece of considered design.",
+      "An edition for the kitchen that prefers stillness. The Ivory whipper carries the same engineering as N°01 — the same heavy-gauge body, the same reinforced mechanism — finished in a hand-applied powder coating that softens its presence on the counter.",
+      "It is a piece designed to disappear into a thoughtfully composed room, then to do its work without ceremony when it is asked.",
     ],
 
     highlights: [
-      "Hand-finished powder coating",
-      "Soft ivory tone for a calmer kitchen palette",
-      "Same engineering as our flagship whipper",
+      "Hand-applied ivory powder finish",
+      "Identical engineering to the flagship N°01",
+      "A quieter object for considered interiors",
     ],
 
     features: [
-      "Premium powder-coated finish",
-      "0.5L professional capacity",
+      "Hand-applied powder coating",
+      "0.5L capacity",
       "Three stainless decorating tips",
       "Reinforced lever mechanism",
-      "Hand-wash recommended for finish",
+      "Hand-wash to preserve the finish",
     ],
     materials: "Powder-coated stainless steel · Food-grade silicone",
-    dimensions: "31.5 cm (H) × 8.2 cm (Ø)",
-    capacity: "0.5 Litre",
+    dimensions: "31.5 cm (h) · 8.2 cm (Ø)",
+    capacity: "0.5 L",
     inBox: [
-      "Cream Whipper Body",
-      "Charger Holder",
-      "3 × Stainless Steel Decorating Tips",
-      "Dust Cap",
-      "Cleaning Brush",
+      "Whipper body",
+      "Charger holder",
+      "Three stainless decorating tips",
+      "Dust cap",
+      "Cleaning brush",
     ],
 
     manualRating: 4.7,
@@ -177,10 +174,12 @@ export const products: Product[] = [
   {
     id: "p3",
     slug: "signature-decorating-tips-set",
-    name: "Signature Decorating Tips Set",
-    tagline: "Three finishes. Endless possibilities.",
-    category: "Accessories",
-    price: "$18.00",
+    name: "The Tips, Set of Three",
+    tagline: "Three finishes. A lifetime of small flourishes.",
+    category: "Atelier Accessories",
+    collection: "The Morning Ritual",
+    price: "$18",
+    ritualLine: "The small details that turn cooking into a craft.",
 
     amazonUrl: "#",
     amazonAsin: "",
@@ -192,29 +191,30 @@ export const products: Product[] = [
     ],
 
     summary:
-      "A trio of professionally machined stainless steel tips — straight, star, and tulip — designed to deliver flawless finishes every time.",
+      "A trio of precision-machined stainless tips — straight, star, and tulip — for the kitchen that takes presentation seriously.",
 
     description: [
-      "Replace this description with your own copy. Use multiple paragraphs to tell the full story — what the product does, who it's for, and why it's worth owning.",
-      "Each tip is precision-machined from a single piece of 304-grade stainless steel, polished to a mirror finish, and engineered to fit any standard whipper.",
+      "Each tip is machined from a single piece of 304 stainless, polished to a soft mirror finish, and engineered to fit any standard whipper. Small instruments for the part of cooking that is closer to drawing than to chemistry.",
+      "Stored in a linen pouch that quietly belongs in a drawer of well-kept things.",
     ],
 
     highlights: [
-      "Surgical-grade 304 stainless steel",
-      "Three professional finishes in one set",
+      "Surgical-grade 304 stainless",
+      "Three professional finishes",
       "Universal whipper compatibility",
     ],
 
     features: [
       "Three precision-machined tips",
-      "Surgical-grade stainless steel",
-      "Universal fit for standard whippers",
+      "Surgical-grade stainless",
+      "Universal whipper fit",
       "Dishwasher safe",
+      "Linen storage pouch included",
     ],
-    materials: "304 Stainless Steel",
+    materials: "304 stainless steel · Linen",
     dimensions: "Standard whipper compatible",
     capacity: "—",
-    inBox: ["Straight Tip", "Star Tip", "Tulip Tip", "Storage Pouch"],
+    inBox: ["Straight tip", "Star tip", "Tulip tip", "Linen pouch"],
 
     manualRating: 4.9,
     manualReviewCount: 318,

@@ -1,28 +1,14 @@
 import { useState } from "react";
-import { Mail, Clock, MapPin } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { Mail, MapPin, Clock } from "lucide-react";
+import { toast } from "sonner";
 
 const faqs = [
-  {
-    q: "Where can I purchase Swisston products?",
-    a: "Our full collection is available through our trusted Amazon storefront, with secure checkout, fast shipping, and easy returns handled by Amazon.",
-  },
-  {
-    q: "Do you offer international shipping?",
-    a: "Shipping is handled directly through Amazon and varies by region. Please refer to the product listing on Amazon for delivery options to your location.",
-  },
-  {
-    q: "What is your return policy?",
-    a: "All returns are handled through Amazon under their standard returns policy, giving you a seamless and protected experience.",
-  },
-  {
-    q: "Are your products dishwasher safe?",
-    a: "Most stainless components are dishwasher safe. Specific care instructions are included with every product and listed on each product page.",
-  },
-  {
-    q: "How can I get in touch for press or partnerships?",
-    a: "We welcome thoughtful partnerships. Please write to us at hello@swisston.com and a member of our team will be in touch.",
-  },
+  { q: "Where do Swisston pieces ship from?", a: "Every order is fulfilled through Amazon, with free Prime delivery to all fifty states." },
+  { q: "Is the matte ink finish dishwasher safe?", a: "The body and components are dishwasher-safe. We recommend a hand wash for the powder-coated Ivory edition to preserve its hand-applied finish." },
+  { q: "What is the lifetime mechanical guarantee?", a: "Every Swisston piece is guaranteed for life against mechanical failure. If the lever or seal ever fails under normal use, we replace the piece — no receipt required." },
+  { q: "Do you offer linen-wrapped gifting?", a: "Yes. Every piece arrives wrapped in unbleached linen, inside a recycled-board box, with a hand-tied jute cord. No additional cost." },
+  { q: "Where are Swisston pieces made?", a: "Designed in Austin, Texas. Prototyped in our central Texas workshop. Polished and finished by a fourth-generation atelier outside Florence." },
+  { q: "Can I order in volume for a property or restaurant?", a: "Yes. Reach our concierge directly at hello@swisston.com — we respond personally, usually within a day." },
 ];
 
 const Contact = () => {
@@ -33,151 +19,127 @@ const Contact = () => {
     e.preventDefault();
     setSubmitting(true);
     setTimeout(() => {
-      setSubmitting(false);
       (e.target as HTMLFormElement).reset();
-      toast({
-        title: "Thank you for writing to us",
-        description: "A member of our team will respond within one business day.",
-      });
+      setSubmitting(false);
+      toast.success("Note received. We'll be in touch shortly.");
     }, 700);
   };
 
   return (
     <>
-      <section className="pt-40 pb-16 md:pt-48 md:pb-20 marble-bg border-b border-border/60">
-        <div className="container max-w-3xl text-center mx-auto">
-          <p className="eyebrow mb-5">Contact</p>
-          <h1 className="font-serif text-5xl md:text-6xl leading-tight">
-            We'd love to hear from you.
-          </h1>
-          <p className="mt-6 text-foreground/70 max-w-xl mx-auto leading-relaxed">
-            Questions about a product, an order, or simply curious about the brand?
-            Our team is here, and we read every message.
-          </p>
+      <section className="surface-paper relative grain pt-40 md:pt-52 pb-20 md:pb-28 border-b border-border/60">
+        <div className="container grid md:grid-cols-12 gap-y-10 md:gap-x-12 items-end">
+          <div className="md:col-span-8">
+            <p className="eyebrow-brass mb-6">Concierge</p>
+            <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.025em]">
+              A note to the <span className="display-italic">studio.</span>
+            </h1>
+          </div>
+          <div className="md:col-span-4">
+            <p className="text-foreground/70 leading-relaxed max-w-sm md:ml-auto">
+              Real people in Austin, Texas. We answer personally — usually within a day, often
+              within an hour.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="container py-20 md:py-28 grid md:grid-cols-12 gap-12 md:gap-16">
-        <div className="md:col-span-5 space-y-10">
-          <div>
-            <p className="eyebrow mb-4">Reach Us</p>
-            <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <Mail className="h-5 w-5 text-accent mt-0.5" strokeWidth={1.25} />
-                <div>
-                  <p className="text-sm font-medium">Email</p>
-                  <a href="mailto:hello@swisston.com" className="text-sm text-muted-foreground link-elegant">
-                    hello@swisston.com
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <Clock className="h-5 w-5 text-accent mt-0.5" strokeWidth={1.25} />
-                <div>
-                  <p className="text-sm font-medium">Hours</p>
-                  <p className="text-sm text-muted-foreground">Mon – Fri · 9am to 6pm EST</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <MapPin className="h-5 w-5 text-accent mt-0.5" strokeWidth={1.25} />
-                <div>
-                  <p className="text-sm font-medium">Headquarters</p>
-                  <p className="text-sm text-muted-foreground">United States</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+      <section className="container py-24 md:py-32 grid md:grid-cols-12 gap-y-16 md:gap-x-16">
+        <div className="md:col-span-4 space-y-12">
+          {[
+            { i: Mail,    t: "By note",       v: "hello@swisston.com" },
+            { i: Clock,   t: "Studio hours",  v: "Monday — Friday · 9 to 6 CT" },
+            { i: MapPin,  t: "The studio",    v: "Austin, Texas · United States" },
+          ].map(({ i: Icon, t, v }) => (
+            <div key={t}>
+              <Icon className="h-4 w-4 text-brass mb-4" strokeWidth={1.25} />
+              <p className="eyebrow mb-2">{t}</p>
+              <p className="font-display text-xl">{v}</p>
+            </div>
+          ))}
 
-          <div className="bg-secondary/60 p-8">
-            <p className="eyebrow mb-3">A Note From Us</p>
-            <p className="font-serif text-xl leading-snug text-foreground/90">
-              "Every message matters. We respond personally, usually within
-              one business day."
+          <div className="pt-8 border-t border-border/60">
+            <p className="eyebrow mb-4">A small promise</p>
+            <p className="text-foreground/75 leading-relaxed text-sm">
+              We don't run a help-desk. Every note that comes through this form is read by
+              someone in the studio, and answered personally.
             </p>
-            <p className="mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">— The Swisston Team</p>
           </div>
         </div>
 
-        <form onSubmit={onSubmit} className="md:col-span-7 space-y-6">
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label className="eyebrow block mb-2">First Name</label>
-              <input
-                required
-                type="text"
-                className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-2.5 text-sm font-light focus:outline-none transition-colors"
-              />
-            </div>
-            <div>
-              <label className="eyebrow block mb-2">Last Name</label>
-              <input
-                required
-                type="text"
-                className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-2.5 text-sm font-light focus:outline-none transition-colors"
-              />
-            </div>
+        <form onSubmit={onSubmit} className="md:col-span-7 md:col-start-6 space-y-8">
+          <div className="grid sm:grid-cols-2 gap-8">
+            {[
+              { id: "name",    label: "Your name",      type: "text",  req: true },
+              { id: "email",   label: "Your email",     type: "email", req: true },
+            ].map((f) => (
+              <div key={f.id}>
+                <label htmlFor={f.id} className="block eyebrow mb-3">{f.label}</label>
+                <input
+                  id={f.id}
+                  name={f.id}
+                  type={f.type}
+                  required={f.req}
+                  className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors"
+                />
+              </div>
+            ))}
           </div>
           <div>
-            <label className="eyebrow block mb-2">Email</label>
+            <label htmlFor="subject" className="block eyebrow mb-3">Subject</label>
             <input
-              required
-              type="email"
-              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-2.5 text-sm font-light focus:outline-none transition-colors"
-            />
-          </div>
-          <div>
-            <label className="eyebrow block mb-2">Subject</label>
-            <input
+              id="subject"
+              name="subject"
               type="text"
-              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-2.5 text-sm font-light focus:outline-none transition-colors"
+              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors"
             />
           </div>
           <div>
-            <label className="eyebrow block mb-2">Message</label>
+            <label htmlFor="message" className="block eyebrow mb-3">Your note</label>
             <textarea
+              id="message"
+              name="message"
               required
-              rows={5}
-              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-2.5 text-sm font-light focus:outline-none transition-colors resize-none"
+              rows={6}
+              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors resize-none"
             />
           </div>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="bg-foreground text-background px-10 py-4 text-xs uppercase tracking-[0.22em] font-light hover:bg-foreground/90 transition-colors disabled:opacity-60"
-          >
-            {submitting ? "Sending..." : "Send Message"}
+          <button type="submit" disabled={submitting} className="btn-ink disabled:opacity-60">
+            {submitting ? "Sending…" : "Send the note"}
           </button>
         </form>
       </section>
 
-      <section className="bg-secondary/40 border-t border-border/60">
-        <div className="container py-24">
-          <div className="text-center max-w-xl mx-auto mb-14">
-            <p className="eyebrow mb-3">Frequently Asked</p>
-            <h2 className="font-serif text-4xl md:text-5xl">Helpful answers</h2>
+      <section className="surface-stone relative grain border-t border-border/60">
+        <div className="container py-24 md:py-32 grid md:grid-cols-12 gap-y-10 md:gap-x-16">
+          <div className="md:col-span-4">
+            <p className="eyebrow-brass mb-5">N°02 — Frequently asked</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
+              Anything <span className="display-italic">to know.</span>
+            </h2>
           </div>
-          <div className="max-w-3xl mx-auto divide-y divide-border">
-            {faqs.map((f, i) => (
-              <button
-                key={i}
-                onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full text-left py-6 group"
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <h3 className="font-serif text-xl group-hover:text-accent transition-colors">{f.q}</h3>
-                  <span className="font-serif text-2xl text-muted-foreground shrink-0 leading-none mt-1">
-                    {openIdx === i ? "–" : "+"}
-                  </span>
-                </div>
-                <div
-                  className={`overflow-hidden transition-[max-height,opacity,margin] duration-500 ease-out ${
-                    openIdx === i ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="text-foreground/75 leading-relaxed pr-12">{f.a}</p>
-                </div>
-              </button>
-            ))}
+          <div className="md:col-span-7 md:col-start-6">
+            <ul className="divide-y divide-foreground/15 border-y border-foreground/15">
+              {faqs.map((f, i) => {
+                const open = openIdx === i;
+                return (
+                  <li key={f.q}>
+                    <button
+                      onClick={() => setOpenIdx(open ? null : i)}
+                      className="w-full text-left py-6 flex items-start justify-between gap-6 group"
+                    >
+                      <span className="font-display text-xl md:text-2xl leading-snug pr-4">{f.q}</span>
+                      <span className="font-mono text-xs text-brass mt-2 shrink-0">{open ? "—" : "+"}</span>
+                    </button>
+                    <div className={`grid transition-all duration-500 ease-out ${open ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}>
+                      <div className="overflow-hidden">
+                        <p className="text-foreground/75 leading-relaxed max-w-xl">{f.a}</p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </section>
