@@ -1,379 +1,285 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
-import { Marquee } from "@/components/site/Marquee";
 
-import heroEstate from "@/assets/hero-estate.jpg";
-import ritualMorning from "@/assets/ritual-morning.jpg";
-import ritualPrep from "@/assets/ritual-prep.jpg";
-import materialStudy from "@/assets/material-study.jpg";
-import dining from "@/assets/dining-scene.jpg";
-import productPortrait from "@/assets/product-portrait.jpg";
-import detailCream from "@/assets/detail-cream.jpg";
+import galleryHero from "@/assets/gallery-hero.jpg";
+import plate01 from "@/assets/plate-01.jpg";
+import materialSteel from "@/assets/material-steel.jpg";
+import ritualFlatlay from "@/assets/ritual-flatlay.jpg";
+import plateDetail from "@/assets/plate-detail.jpg";
 
 const Index = () => {
   return (
     <>
-      {/* ─────────────────────── HERO ─────────────────────── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
+      {/* ─────────────────── N°00 · OVERTURE ─────────────────── */}
+      <section className="relative min-h-[100svh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
           <img
-            src={heroEstate}
-            alt="Honed travertine countertop in a sunlit estate kitchen with hand-rubbed white oak cabinetry"
+            src={galleryHero}
+            alt="Dark editorial kitchen with single shaft of warm light across honed stone"
             width={1920}
             height={1080}
-            className="absolute inset-0 h-full w-full object-cover ken-burns"
+            className="absolute inset-0 h-full w-full object-cover opacity-90 ken-burns"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-pitch/40 via-transparent to-pitch" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pitch/70 via-transparent to-transparent" />
         </div>
 
-        {/* Top meta */}
-        <div className="absolute top-28 md:top-32 inset-x-0 z-10">
+        {/* Top corners */}
+        <div className="absolute top-20 inset-x-0 z-10">
           <div className="container flex items-center justify-between">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-foreground/60 reveal-slow">
-              Volume I · MMXXV
-            </p>
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-foreground/60 reveal-slow hidden sm:block">
-              The Atelier Edition
-            </p>
+            <p className="plaque-ember reveal-fade">Vol. II — The Index</p>
+            <p className="plaque hidden sm:block reveal-fade">A house of fourteen objects</p>
           </div>
         </div>
 
-        <div className="relative container pb-20 md:pb-28">
-          <div className="grid md:grid-cols-12 gap-y-10 md:gap-x-12 items-end">
-            <div className="md:col-span-8 reveal" style={{ animationDelay: "120ms" }}>
-              <p className="eyebrow-brass mb-6">A House of Considered Kitchen Objects</p>
-              <h1 className="font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.92] tracking-[-0.025em] text-foreground">
-                Quiet objects,<br />
-                <span className="display-italic text-foreground/85">for a kitchen that listens.</span>
+        <div className="relative container pb-20 md:pb-28 z-10">
+          <div className="grid md:grid-cols-12 gap-y-10 md:gap-x-12">
+            <div className="md:col-span-9">
+              <div className="flex items-center gap-4 mb-8 reveal" style={{ animationDelay: "100ms" }}>
+                <span className="numeral text-2xl">N°00</span>
+                <span className="rule-ember" />
+                <span className="plaque-bone">Overture</span>
+              </div>
+              <h1
+                className="font-display text-[clamp(3.2rem,9vw,9rem)] leading-[0.88] tracking-[-0.03em] text-bone reveal"
+                style={{ animationDelay: "220ms" }}
+              >
+                Objects that <span className="italic text-ember">behave</span><br />
+                like heirlooms.
               </h1>
-            </div>
-
-            <div className="md:col-span-4 reveal" style={{ animationDelay: "320ms" }}>
-              <p className="text-base text-foreground/75 leading-relaxed max-w-sm md:ml-auto md:text-right">
-                Heirloom-grade home & kitchen pieces, designed in Texas with the restraint of an
-                Italian farmhouse and the gravity of an estate kitchen.
+              <p
+                className="font-serif italic text-pewter text-lg md:text-xl mt-10 max-w-xl leading-relaxed reveal"
+                style={{ animationDelay: "420ms" }}
+              >
+                Swisston is an American house of kitchen instruments — built quietly,
+                weighted with intent, and made to remain on the counter long after
+                the season has changed.
               </p>
-              <div className="mt-8 flex md:justify-end gap-6 items-center">
-                <Link to="/shop" className="btn-ghost group">
-                  Enter the Atelier
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1" />
+              <div
+                className="flex flex-wrap items-center gap-5 mt-12 reveal"
+                style={{ animationDelay: "560ms" }}
+              >
+                <Link to="/shop" className="btn-bone">
+                  Enter the Index
                 </Link>
+                <Link to="/about" className="btn-link">
+                  The House →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom plaque */}
+        <div className="absolute bottom-6 inset-x-0 z-10">
+          <div className="container flex items-center justify-between">
+            <p className="plaque">↓ Scroll · Index begins</p>
+            <p className="plaque hidden md:block">Designed in Texas · Shipped via Amazon</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────── N°I · THE THESIS ─────────────────── */}
+      <section className="border-t border-border/60">
+        <div className="container py-32 md:py-44">
+          <div className="grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-3">
+              <span className="numeral text-6xl">N°I</span>
+              <p className="plaque-ember mt-4">The Thesis</p>
+            </div>
+            <div className="md:col-span-7 md:col-start-5">
+              <p className="font-serif text-3xl md:text-4xl leading-[1.3] text-bone tracking-tight">
+                We make <span className="italic text-ember">few things</span>, slowly, and we keep them in
+                the catalogue until they no longer deserve to be there.
+              </p>
+              <div className="mt-12 grid sm:grid-cols-3 gap-10 pt-10 border-t border-border/60">
+                {[
+                  ["Considered", "One revision a year, never a season."],
+                  ["Weighted", "Heavy-gauge stainless. Built once, kept always."],
+                  ["Quiet", "No logos on the object. The work speaks."],
+                ].map(([h, b]) => (
+                  <div key={h}>
+                    <p className="plaque-ember mb-2">{h}</p>
+                    <p className="font-serif text-bone/85 leading-relaxed">{b}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─────────────── MARQUEE — house codes ─────────────── */}
-      <Marquee />
-
-      {/* ─────────────── MANIFESTO ─────────────── */}
-      <section className="surface-paper relative grain">
-        <div className="container py-28 md:py-40 grid md:grid-cols-12 gap-y-12 md:gap-x-16">
-          <div className="md:col-span-4">
-            <p className="eyebrow mb-6">N°01 — The House Codes</p>
-            <div className="rule-brass" />
-          </div>
-          <div className="md:col-span-8">
-            <p className="font-display text-[clamp(1.75rem,3vw,2.6rem)] leading-[1.18] tracking-[-0.015em] text-foreground/95">
-              We make the kind of kitchen objects that quietly outlast everything around them —
-              <span className="display-italic text-foreground"> heavy in the hand, soft in the room,</span> built for the small daily ceremonies that, taken together, become a life well lived.
-            </p>
-            <p className="mt-10 text-foreground/70 leading-relaxed max-w-xl">
-              No trend cycles. No plastic. No noise. Each piece is engineered once, finished by hand,
-              and made to perform identically on the thousandth use as on the first.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────── HERO PIECE — full-bleed editorial ─────────────── */}
-      <section className="bg-foreground text-background relative overflow-hidden">
-        <div className="grid md:grid-cols-2 min-h-[80svh]">
-          <div className="relative aspect-[4/5] md:aspect-auto">
-            <img
-              src={productPortrait}
-              alt="The Whipper, N°01 in matte ink stainless on travertine"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-          <div className="flex items-center px-8 md:px-16 lg:px-24 py-20 md:py-32">
-            <div className="max-w-md">
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-background/60 mb-6">
-                The Hero Piece · N°01
-              </p>
-              <h2 className="font-display text-5xl md:text-6xl leading-[1.02] tracking-[-0.02em]">
-                The Whipper,<br />
-                <span className="display-italic">in matte ink.</span>
+      {/* ─────────────────── N°II · THE INDEX ─────────────────── */}
+      <section className="border-t border-border/60 surface-pitch">
+        <div className="container py-24 md:py-32">
+          <div className="flex items-end justify-between mb-16">
+            <div>
+              <span className="numeral text-6xl">N°II</span>
+              <p className="plaque-ember mt-4">The Index</p>
+              <h2 className="font-display text-5xl md:text-6xl tracking-tight mt-6 max-w-2xl">
+                Fourteen plates,<br />
+                <span className="italic">arranged by ritual.</span>
               </h2>
-              <div className="rule-brass my-10 opacity-80" />
-              <p className="text-background/75 leading-relaxed">
-                A precision-built cream whipper, weighted to feel inevitable in the hand. Made for
-                the cup of coffee that becomes a small daily ceremony — and the kitchen that
-                takes its rituals seriously.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <Link to="/product/professional-cream-whipper-500ml" className="btn-bone group">
-                  Read the piece
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1" />
-                </Link>
-                <a href="#" target="_blank" rel="noreferrer noopener" className="font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light text-background/80 border-b border-background/40 hover:border-background pb-1 transition-colors inline-flex items-center gap-2">
-                  Buy on Amazon <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────── COLLECTION — RITUALS ─────────────── */}
-      <section className="container py-28 md:py-40">
-        <div className="grid md:grid-cols-12 gap-y-10 md:gap-x-12 items-end mb-20">
-          <div className="md:col-span-7">
-            <p className="eyebrow-brass mb-5">N°02 — Pieces by Ritual</p>
-            <h2 className="font-display text-5xl md:text-6xl leading-[1.04] tracking-[-0.02em]">
-              Designed around the small <span className="display-italic">ceremonies of the day.</span>
-            </h2>
-          </div>
-          <div className="md:col-span-4 md:col-start-9">
-            <p className="text-foreground/70 leading-relaxed">
-              Each Swisston piece is built for a moment — the slow morning, the prepared lunch,
-              the long table on a Sunday — not for a category in a catalogue.
-            </p>
-          </div>
-        </div>
-
-        {/* Ritual cards */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-24">
-          {[
-            {
-              tag: "Ritual N°01",
-              title: "The Slow Morning",
-              copy: "Espresso, cream, the first quiet half-hour of the day.",
-              img: ritualMorning,
-            },
-            {
-              tag: "Ritual N°02",
-              title: "The Prepared Kitchen",
-              copy: "Hands working in linen light. A week, made calmer.",
-              img: ritualPrep,
-            },
-          ].map((r, i) => (
-            <article key={r.tag} className="reveal" style={{ animationDelay: `${i * 120}ms` }}>
-              <div className="relative overflow-hidden aspect-[4/5] mb-6 group">
-                <img src={r.img} alt={r.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.05]" />
-                <span className="absolute top-5 left-5 font-mono text-[0.6rem] uppercase tracking-[0.32em] text-background/90 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
-                  {r.tag}
-                </span>
-              </div>
-              <h3 className="font-display text-3xl mb-2">{r.title}</h3>
-              <p className="text-muted-foreground italic max-w-md">{r.copy}</p>
-            </article>
-          ))}
-        </div>
-
-        {/* Products belonging to the morning ritual */}
-        <div className="border-t border-border/60 pt-16">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
-            <p className="eyebrow">In this collection</p>
-            <Link to="/shop" className="btn-ghost group">
-              View all pieces <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            <Link to="/shop" className="btn-link hidden md:inline-flex">
+              View all →
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
             {products.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
           </div>
+
+          <div className="mt-20 flex justify-center">
+            <Link to="/shop" className="btn-outline-bone">
+              The complete index →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ─────────────── MATERIAL STUDY ─────────────── */}
-      <section className="surface-stone relative grain">
-        <div className="container py-28 md:py-40 grid md:grid-cols-12 gap-y-12 md:gap-x-16 items-center">
-          <div className="md:col-span-7 order-2 md:order-1">
+      {/* ─────────────────── N°III · THE STUDY ─────────────────── */}
+      <section className="border-t border-border/60">
+        <div className="grid md:grid-cols-2">
+          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[700px] overflow-hidden">
             <img
-              src={materialStudy}
-              alt="Honed travertine meeting hand-rubbed white oak with weathered brass hardware"
+              src={materialSteel}
+              alt="Brushed stainless steel surface in raking warm light"
               loading="lazy"
-              className="w-full aspect-[16/10] object-cover figure-deep"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-          <div className="md:col-span-5 order-1 md:order-2 md:pl-8">
-            <p className="eyebrow-brass mb-5">N°03 — A Material Study</p>
-            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-10">
-              Travertine, oak, ink, and <span className="display-italic">weathered brass.</span>
+          <div className="p-10 md:p-20 flex flex-col justify-center">
+            <span className="numeral text-6xl">N°III</span>
+            <p className="plaque-ember mt-4">A Study in Material</p>
+            <h2 className="font-display text-4xl md:text-5xl tracking-tight mt-6 leading-tight">
+              Heavy-gauge 304 stainless.<br />
+              <span className="italic text-ember">Hand-finished.</span>
             </h2>
-            <div className="rule-brass mb-8" />
-            <dl className="space-y-6">
-              {[
-                ["Stone", "Honed Italian travertine. Soft, porous, alive in light."],
-                ["Wood", "Hand-rubbed white oak, finished with a hardwax oil."],
-                ["Metal", "Surgical-grade stainless and unlacquered brass that ages."],
-                ["Light", "Northern morning light. Always northern morning light."],
-              ].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[5rem_1fr] gap-6 border-b border-foreground/15 pb-5">
-                  <dt className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-foreground/60 pt-1">
-                    {k}
-                  </dt>
-                  <dd className="text-foreground/85 leading-relaxed">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────── FOUNDER / FOR THE HOUSE ─────────────── */}
-      <section className="bg-background relative">
-        <div className="container py-28 md:py-40">
-          <div className="grid md:grid-cols-12 gap-y-12 md:gap-x-16">
-            <div className="md:col-span-3">
-              <p className="eyebrow mb-5">A note from the studio</p>
-              <div className="rule-brass" />
-            </div>
-            <div className="md:col-span-7 md:col-start-5">
-              <p className="dropcap font-display text-[1.5rem] md:text-[1.75rem] leading-[1.45] tracking-[-0.01em] text-foreground/95">
-                We started Swisston with a simple, almost old-fashioned idea: that the objects
-                we touch every morning should be <span className="display-italic">good company.</span> Heavy
-                where they should be heavy. Quiet where they should be quiet. Made by people who
-                cared what they were making, for people who notice these things.
-              </p>
-              <p className="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.32em] text-muted-foreground">
-                — The Swisston Studio · Austin, Texas
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────── EDITORIAL DIPTYCH ─────────────── */}
-      <section className="bg-foreground text-background">
-        <div className="grid md:grid-cols-2">
-          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[80svh]">
-            <img src={dining} alt="A long travertine table set for dinner with brass candlesticks" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-90" />
-          </div>
-          <div className="grid grid-rows-2">
-            <div className="flex items-center px-8 md:px-16 py-20 border-b border-background/15">
+            <p className="font-serif text-pewter text-lg mt-8 leading-relaxed max-w-md">
+              Every Swisston piece begins as a single billet of food-grade stainless
+              and ends in a finishing room in our Texas studio. Mechanisms are
+              reinforced. Seals are medical-grade. The objects are built to perform
+              identically on the thousandth use as on the first.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-6 pt-8 border-t border-border/60 max-w-md">
               <div>
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-background/55 mb-5">N°04 — For the long table</p>
-                <h3 className="font-display text-3xl md:text-4xl leading-tight tracking-[-0.015em] mb-6">
-                  Pieces that <span className="display-italic">earn the counter.</span>
-                </h3>
-                <p className="text-background/70 leading-relaxed max-w-md">
-                  We design for the kitchens where things stay out — where the whipper lives next to
-                  the espresso machine, and the board never goes back in the drawer.
-                </p>
+                <p className="numeral text-4xl">10y</p>
+                <p className="plaque mt-2">Mechanism warranty</p>
+              </div>
+              <div>
+                <p className="numeral text-4xl">304</p>
+                <p className="plaque mt-2">Surgical-grade stainless</p>
               </div>
             </div>
-            <div className="relative">
-              <img src={detailCream} alt="A piped quenelle of fresh cream" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ─────────────── TRUST · IN VOICES ─────────────── */}
-      <section className="surface-paper relative grain">
-        <div className="container py-28 md:py-40">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <p className="eyebrow-brass mb-5">N°05 — In Voices</p>
-            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
-              Notes from <span className="display-italic">private kitchens.</span>
+      {/* ─────────────────── N°IV · THE RITUAL ─────────────────── */}
+      <section className="border-t border-border/60">
+        <div className="container py-24 md:py-32">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="numeral text-6xl">N°IV</span>
+            <p className="plaque-ember mt-4">A Day in the Index</p>
+            <h2 className="font-display text-4xl md:text-6xl tracking-tight mt-6 leading-[1.05]">
+              Each plate has <span className="italic">a moment.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-x-12 gap-y-16">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
             {[
               {
-                quote: "It feels heavier and more refined than I expected. It belongs on the counter — not in a drawer.",
-                name: "Olivia M.",
-                place: "Brooklyn, New York",
+                no: "06:42",
+                title: "Morning",
+                copy: "The whipper, a cup of espresso, the rest of the house still asleep.",
+                img: ritualFlatlay,
               },
               {
-                quote: "I've owned three different whippers over the years. This is the first one that feels like a real piece of kitchen equipment.",
-                name: "Daniel R.",
-                place: "Austin, Texas",
+                no: "13:15",
+                title: "Service",
+                copy: "Lunch for four. The shredder, the linen, a sense of unhurried order.",
+                img: plate01,
               },
               {
-                quote: "Beautifully made, and so simple to use. The packaging alone made it feel like a gift to myself.",
-                name: "Priya S.",
-                place: "San Francisco, California",
+                no: "21:30",
+                title: "Late",
+                copy: "A single quenelle on a charred ceramic plate. Nothing more is needed.",
+                img: plateDetail,
               },
-            ].map((t, i) => (
-              <figure key={t.name} className="reveal" style={{ animationDelay: `${i * 100}ms` }}>
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-brass mb-6">
-                  N°{String(i + 1).padStart(2, "0")}
-                </p>
-                <blockquote className="font-display text-xl md:text-[1.4rem] leading-[1.35] tracking-[-0.005em] text-foreground/90">
-                  <span className="display-italic text-brass mr-1">“</span>
-                  {t.quote}
-                  <span className="display-italic text-brass ml-1">”</span>
-                </blockquote>
-                <figcaption className="mt-8 pt-6 border-t border-foreground/15">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em]">{t.name}</p>
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground mt-1">
-                    {t.place}
-                  </p>
-                </figcaption>
-              </figure>
+            ].map((m, i) => (
+              <article
+                key={m.no}
+                className="group reveal"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-graphite mb-6 figure-cast">
+                  <img
+                    src={m.img}
+                    alt={m.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-[1.06]"
+                  />
+                  <div className="absolute top-5 left-5">
+                    <span className="font-mono text-xs tracking-[0.2em] text-bone bg-pitch/70 backdrop-blur-sm px-3 py-1.5">
+                      {m.no}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="font-display text-3xl tracking-tight">{m.title}</h3>
+                <p className="font-serif italic text-pewter mt-3 leading-relaxed">{m.copy}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─────────────── ASSURANCES ─────────────── */}
-      <section className="border-y border-border/60 bg-background">
-        <div className="container py-16 grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-border/60">
-          {[
-            ["Lifetime Mechanical Guarantee", "Every Swisston piece is guaranteed for life against mechanical failure."],
-            ["Considered Materials", "Heavy-gauge stainless. Food-grade silicone. Linen and oak. Never plastic."],
-            ["Carbon-Neutral Delivery", "Fulfilled through Amazon, with offset shipping to all fifty states."],
-            ["A Concierge, Not a Helpdesk", "Real people in our Austin studio. Reach us by note, any day."],
-          ].map(([t, c], i) => (
-            <div key={t} className="px-0 md:px-8 py-8 md:py-0 first:pt-0 md:first:pl-0 last:pb-0 md:last:pr-0">
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-brass mb-4">
-                N°{String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="font-display text-xl leading-snug mb-3">{t}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{c}</p>
-            </div>
-          ))}
+      {/* ─────────────────── N°V · TRUST ─────────────────── */}
+      <section className="border-t border-border/60 surface-pitch">
+        <div className="container py-24">
+          <div className="grid md:grid-cols-4 gap-10 items-start">
+            {[
+              ["4.8 / 5", "Across 2,200+ verified Amazon reviews"],
+              ["10 yrs", "Mechanism warranty on every plate"],
+              ["48 hrs", "Dispatch from Amazon Prime fulfilment"],
+              ["Quiet returns", "Thirty days, no narrative required"],
+            ].map(([h, b]) => (
+              <div key={h} className="border-l border-border/80 pl-6">
+                <p className="font-display text-3xl tracking-tight text-bone">{h}</p>
+                <p className="font-serif italic text-pewter mt-3 leading-relaxed">{b}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ─────────────── INVITATION ─────────────── */}
-      <section className="relative overflow-hidden">
-        <img
-          src={heroEstate}
-          alt=""
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-foreground/65" />
-        <div className="relative container py-32 md:py-44 text-center text-background">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-background/60 mb-6">
-            An invitation
-          </p>
-          <h2 className="font-display text-5xl md:text-7xl leading-[1.02] tracking-[-0.02em] max-w-3xl mx-auto">
-            Bring quiet weight <span className="display-italic">into the kitchen.</span>
-          </h2>
-          <div className="rule-brass mx-auto my-10 opacity-80" />
-          <p className="mt-2 text-background/75 max-w-md mx-auto leading-relaxed">
-            Explore the full collection, or shop directly through our trusted Amazon storefront —
-            with carbon-neutral delivery to every door in America.
-          </p>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            <Link to="/shop" className="bg-background text-foreground px-9 py-4 font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light hover:bg-background/90 transition-colors inline-flex items-center gap-3">
-              Enter the Atelier
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <a href="#" target="_blank" rel="noreferrer noopener" className="font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light text-background border-b border-background/50 hover:border-background pb-1 transition-colors inline-flex items-center gap-2">
-              Shop on Amazon <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
+      {/* ─────────────────── N°VI · THE HOUSE ─────────────────── */}
+      <section className="border-t border-border/60">
+        <div className="container py-32 md:py-40">
+          <div className="grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-3">
+              <span className="numeral text-6xl">N°VI</span>
+              <p className="plaque-ember mt-4">The House</p>
+            </div>
+            <div className="md:col-span-8 md:col-start-5">
+              <p className="font-serif italic text-2xl md:text-3xl text-bone leading-[1.45] tracking-tight">
+                "We started Swisston because the kitchens we love — old houses,
+                heavy stone, oak we have known for years — deserved instruments
+                that behaved the same way. Built once. Quiet. There when needed."
+              </p>
+              <div className="mt-10 flex items-center gap-6">
+                <span className="rule-ember" />
+                <p className="plaque">The Founder · Austin, Texas</p>
+              </div>
+              <div className="mt-12">
+                <Link to="/about" className="btn-link">
+                  Read the provenance →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
