@@ -1,105 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────────
-   SWISSTON · House Codes
-   Materials: travertine · oak · ink · weathered brass · linen
-   Influence: Italian farmhouse · Texas estate · old-money restraint
+   SWISSTON · The Index — Vol. II
+   Concept: A dark gallery. Chiaroscuro. The object as artifact.
+   Palette: obsidian, graphite, bone, ember (warm sidelight)
    ───────────────────────────────────────────────────────────────── */
 
 @layer base {
   :root {
-    /* Surfaces — bone, oat, travertine */
-    --background: 36 22% 95%;          /* bone */
-    --foreground: 24 16% 12%;          /* ink */
+    /* DARK by default — the gallery */
+    --background: 30 6% 7%;            /* obsidian */
+    --foreground: 36 18% 92%;          /* bone */
 
-    --card: 36 25% 96%;
-    --card-foreground: 24 16% 12%;
+    --card: 30 6% 9%;
+    --card-foreground: 36 18% 92%;
 
-    --popover: 36 25% 96%;
-    --popover-foreground: 24 16% 12%;
+    --popover: 30 6% 9%;
+    --popover-foreground: 36 18% 92%;
 
-    --primary: 24 18% 11%;             /* deep ink */
-    --primary-foreground: 36 25% 96%;
+    --primary: 36 18% 92%;             /* bone — used as ink on dark */
+    --primary-foreground: 30 6% 7%;
 
-    --secondary: 32 16% 89%;           /* oat */
-    --secondary-foreground: 24 16% 14%;
+    --secondary: 30 5% 12%;            /* graphite */
+    --secondary-foreground: 36 18% 92%;
 
-    --muted: 34 14% 91%;
-    --muted-foreground: 26 8% 38%;
+    --muted: 30 4% 14%;
+    --muted-foreground: 34 8% 58%;
 
-    --accent: 32 38% 42%;              /* weathered brass */
-    --accent-foreground: 36 25% 96%;
+    --accent: 28 48% 58%;              /* ember — warm sidelight */
+    --accent-foreground: 30 6% 7%;
 
-    --destructive: 8 50% 42%;
-    --destructive-foreground: 36 25% 96%;
+    --destructive: 8 50% 48%;
+    --destructive-foreground: 36 18% 92%;
 
-    --border: 30 12% 82%;
-    --input: 30 12% 84%;
-    --ring: 24 16% 24%;
+    --border: 30 5% 16%;
+    --input: 30 5% 16%;
+    --ring: 28 48% 58%;
 
-    --radius: 0.125rem;
+    --radius: 0;
 
     /* Brand tokens */
-    --bone:       36 22% 95%;
-    --ivory:      38 30% 97%;
-    --travertine: 34 24% 86%;
-    --oat:        32 16% 89%;
-    --linen:      30 18% 84%;
-    --oak:        28 22% 56%;
-    --clay:       18 22% 36%;
-    --ink:        24 16% 12%;
-    --char:       24 14% 18%;
-    --brass:      32 38% 42%;
-    --brass-soft: 34 30% 62%;
-    --sage:       80 8% 42%;
+    --obsidian:  30 6% 7%;
+    --pitch:     30 8% 4%;
+    --graphite:  30 5% 12%;
+    --char:      30 5% 18%;
+    --ash:       30 4% 28%;
+    --pewter:    34 6% 48%;
+    --bone:      36 18% 92%;
+    --ivory:     38 22% 96%;
+    --ember:     28 48% 58%;
+    --ember-deep: 22 52% 38%;
 
     /* Compositions */
-    --gradient-paper:    linear-gradient(180deg, hsl(36 22% 95%) 0%, hsl(34 18% 91%) 100%);
-    --gradient-stone:    linear-gradient(135deg, hsl(36 22% 96%) 0%, hsl(32 16% 88%) 60%, hsl(30 14% 84%) 100%);
-    --gradient-ink:      linear-gradient(180deg, hsl(24 16% 12%) 0%, hsl(24 14% 8%) 100%);
-    --gradient-brass:    linear-gradient(135deg, hsl(34 42% 56%) 0%, hsl(32 36% 38%) 100%);
+    --gradient-pitch:  radial-gradient(ellipse at 30% 0%, hsl(30 6% 11%) 0%, hsl(30 8% 4%) 70%);
+    --gradient-ember:  linear-gradient(135deg, hsl(28 52% 62%) 0%, hsl(22 50% 36%) 100%);
+    --gradient-veil:   linear-gradient(180deg, hsl(30 8% 4% / 0) 0%, hsl(30 8% 4% / 0.95) 100%);
 
-    /* Shadows — deep & soft, never plastic */
-    --shadow-paper:  0 1px 2px hsl(24 16% 12% / 0.04);
-    --shadow-soft:   0 1px 3px hsl(24 16% 12% / 0.06), 0 18px 40px -20px hsl(24 16% 12% / 0.14);
-    --shadow-deep:   0 30px 80px -30px hsl(24 16% 12% / 0.28);
+    /* Shadows */
+    --shadow-cast:  0 40px 100px -30px hsl(30 8% 0% / 0.7);
+    --shadow-edge:  0 1px 0 hsl(36 18% 92% / 0.04);
 
     /* Motion */
     --ease-quiet: cubic-bezier(0.22, 0.61, 0.36, 1);
     --ease-luxe:  cubic-bezier(0.32, 0.72, 0, 1);
 
-    --sidebar-background: 36 22% 95%;
-    --sidebar-foreground: 24 16% 12%;
-    --sidebar-primary: 24 18% 11%;
-    --sidebar-primary-foreground: 36 25% 96%;
-    --sidebar-accent: 32 16% 89%;
-    --sidebar-accent-foreground: 24 16% 14%;
-    --sidebar-border: 30 12% 82%;
-    --sidebar-ring: 24 16% 24%;
-  }
-
-  .dark {
-    --background: 24 14% 8%;
-    --foreground: 36 22% 94%;
-    --card: 24 14% 10%;
-    --card-foreground: 36 22% 94%;
-    --popover: 24 14% 10%;
-    --popover-foreground: 36 22% 94%;
-    --primary: 36 22% 94%;
-    --primary-foreground: 24 14% 10%;
-    --secondary: 24 10% 14%;
-    --secondary-foreground: 36 22% 94%;
-    --muted: 24 10% 14%;
-    --muted-foreground: 30 10% 60%;
-    --accent: 32 38% 52%;
-    --accent-foreground: 24 14% 10%;
-    --border: 24 8% 18%;
-    --input: 24 8% 18%;
-    --ring: 36 22% 70%;
+    --sidebar-background: 30 6% 7%;
+    --sidebar-foreground: 36 18% 92%;
+    --sidebar-primary: 36 18% 92%;
+    --sidebar-primary-foreground: 30 6% 7%;
+    --sidebar-accent: 30 5% 12%;
+    --sidebar-accent-foreground: 36 18% 92%;
+    --sidebar-border: 30 5% 16%;
+    --sidebar-ring: 28 48% 58%;
   }
 }
 
@@ -110,155 +86,133 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     font-weight: 300;
-    font-feature-settings: 'ss01', 'cv11';
     letter-spacing: 0.005em;
+    background: var(--gradient-pitch);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6, .font-display {
-    font-family: 'Fraunces', 'Times New Roman', serif;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-family: 'Spectral', 'Times New Roman', serif;
+    font-weight: 200;
+    letter-spacing: -0.025em;
   }
 
   .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .font-serif { font-family: 'Spectral', serif; }
 
   ::selection {
-    background: hsl(var(--accent) / 0.25);
-    color: hsl(var(--foreground));
+    background: hsl(var(--ember) / 0.3);
+    color: hsl(var(--bone));
   }
 }
 
 @layer components {
 
-  /* ── Surfaces ─────────────────────────────────────── */
-  .surface-paper {
-    background: var(--gradient-paper);
-  }
-
-  .surface-stone {
-    background:
-      radial-gradient(ellipse at 15% 20%, hsl(36 22% 97% / 0.9), transparent 55%),
-      radial-gradient(ellipse at 85% 80%, hsl(32 16% 86%), transparent 55%),
-      hsl(var(--secondary));
-  }
-
-  .surface-ink {
-    background: var(--gradient-ink);
-    color: hsl(var(--background));
-  }
-
-  /* Subtle paper grain — almost invisible, gives editorial weight */
-  .grain::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  }
-
-  /* ── Typography accents ───────────────────────────── */
-  .eyebrow {
-    @apply font-mono text-[0.65rem] uppercase tracking-[0.32em] text-muted-foreground font-light;
-  }
-
-  .eyebrow-brass {
-    @apply font-mono text-[0.65rem] uppercase tracking-[0.32em] font-light;
-    color: hsl(var(--brass));
-  }
-
-  .display-italic {
-    font-family: 'Fraunces', serif;
+  /* ── Index numerals — the museum plaque ──────────── */
+  .numeral {
+    font-family: 'Spectral', serif;
+    font-weight: 200;
     font-style: italic;
-    font-weight: 300;
-    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.04em;
+    color: hsl(var(--ember));
   }
 
-  /* Hairline rules — the punctuation of the design system */
-  .rule-h { @apply h-px w-10 bg-foreground/40; }
-  .rule-v { @apply w-px h-10 bg-foreground/40; }
-  .rule-brass { height: 1px; width: 2.5rem; background: hsl(var(--brass)); }
-
-  /* ── Links & interactive ──────────────────────────── */
-  .link-rule {
-    position: relative;
-    padding-bottom: 0.35rem;
-    transition: color 0.4s var(--ease-quiet);
+  .plaque {
+    @apply font-mono uppercase tracking-[0.32em] font-light;
+    font-size: 0.65rem;
+    color: hsl(var(--pewter));
   }
-  .link-rule::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.3;
-    transition: opacity 0.4s var(--ease-quiet), transform 0.5s var(--ease-luxe);
-    transform-origin: left;
-  }
-  .link-rule:hover::after { opacity: 1; }
 
-  /* Primary CTA — quiet ink slab */
-  .btn-ink {
-    @apply inline-flex items-center justify-center gap-3 px-9 py-4 font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light;
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
-    transition: all 0.5s var(--ease-luxe);
-  }
-  .btn-ink:hover { background: hsl(var(--char)); transform: translateY(-1px); }
+  .plaque-bone { @apply plaque; color: hsl(var(--bone) / 0.7); }
+  .plaque-ember { @apply plaque; color: hsl(var(--ember)); }
 
-  /* Secondary CTA — bone outline */
+  /* ── Hairline rules ──────────────────────────────── */
+  .rule { @apply h-px w-full bg-border; }
+  .rule-short { @apply h-px w-12 bg-foreground/40; }
+  .rule-ember { height: 1px; width: 3rem; background: hsl(var(--ember)); }
+
+  /* ── Surfaces ────────────────────────────────────── */
+  .surface-pitch {
+    background: var(--gradient-pitch);
+  }
+  .surface-graphite {
+    background: hsl(var(--graphite));
+  }
+  .surface-bone {
+    background: hsl(var(--ivory));
+    color: hsl(var(--obsidian));
+  }
+  .surface-bone .plaque { color: hsl(var(--obsidian) / 0.55); }
+
+  /* ── CTAs ────────────────────────────────────────── */
   .btn-bone {
-    @apply inline-flex items-center justify-center gap-3 px-9 py-4 font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light;
-    background: transparent;
-    color: hsl(var(--background));
-    border: 1px solid hsl(var(--background) / 0.5);
+    @apply inline-flex items-center justify-center gap-3 px-9 py-4 font-mono uppercase font-light;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    background: hsl(var(--bone));
+    color: hsl(var(--obsidian));
     transition: all 0.5s var(--ease-luxe);
   }
-  .btn-bone:hover { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  .btn-bone:hover {
+    background: hsl(var(--ember));
+    color: hsl(var(--obsidian));
+  }
 
-  /* Ghost link CTA */
-  .btn-ghost {
-    @apply inline-flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light;
-    color: hsl(var(--foreground));
-    border-bottom: 1px solid hsl(var(--foreground) / 0.4);
-    padding-bottom: 0.35rem;
+  .btn-outline-bone {
+    @apply inline-flex items-center justify-center gap-3 px-9 py-4 font-mono uppercase font-light;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    background: transparent;
+    color: hsl(var(--bone));
+    border: 1px solid hsl(var(--bone) / 0.4);
+    transition: all 0.5s var(--ease-luxe);
+  }
+  .btn-outline-bone:hover {
+    border-color: hsl(var(--ember));
+    color: hsl(var(--ember));
+  }
+
+  .btn-link {
+    @apply inline-flex items-center gap-3 font-mono uppercase font-light pb-1;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: hsl(var(--bone));
+    border-bottom: 1px solid hsl(var(--bone) / 0.3);
     transition: all 0.4s var(--ease-quiet);
   }
-  .btn-ghost:hover { border-bottom-color: hsl(var(--foreground)); }
+  .btn-link:hover { border-bottom-color: hsl(var(--ember)); color: hsl(var(--ember)); }
 
-  /* ── Editorial figures ────────────────────────────── */
-  .figure-shadow { box-shadow: var(--shadow-soft); }
-  .figure-deep   { box-shadow: var(--shadow-deep); }
+  /* ── Editorial figure ────────────────────────────── */
+  .figure-cast { box-shadow: var(--shadow-cast); }
 
-  /* Drop cap for editorial paragraphs */
+  /* Vertical wordmark for side-rail */
+  .vertical-mark {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.5em;
+  }
+
+  /* Drop cap — editorial paragraph */
   .dropcap::first-letter {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-variation-settings: "opsz" 144;
-    font-size: 4.5rem;
+    font-family: 'Spectral', serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: 5rem;
     line-height: 0.85;
     float: left;
-    padding: 0.4rem 0.6rem 0 0;
-    color: hsl(var(--foreground));
+    padding: 0.5rem 0.7rem 0 0;
+    color: hsl(var(--ember));
   }
 
-  /* Marquee strip */
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 50s linear infinite;
-  }
-
-  /* ── Motion utilities ─────────────────────────────── */
+  /* ── Motion ──────────────────────────────────────── */
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
     animation: reveal 1.2s var(--ease-luxe) forwards;
   }
-  .reveal-slow {
+  .reveal-fade {
     opacity: 0;
     animation: reveal-fade 1.6s var(--ease-quiet) forwards;
   }
@@ -270,14 +224,8 @@
 @keyframes reveal-fade {
   to { opacity: 1; }
 }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 @keyframes ken-burns {
   from { transform: scale(1); }
   to   { transform: scale(1.08); }
 }
-.ken-burns {
-  animation: ken-burns 18s ease-out forwards;
-}
+.ken-burns { animation: ken-burns 22s ease-out forwards; }
