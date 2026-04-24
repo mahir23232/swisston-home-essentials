@@ -13,24 +13,19 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(
-  [
-    {
-      element: <SiteLayout />,
-      children: [
-        { path: "/", element: <Index /> },
-        { path: "/shop", element: <Shop /> },
-        { path: "/product/:slug", element: <ProductPage /> },
-        { path: "/about", element: <About /> },
-        { path: "/contact", element: <Contact /> },
-        { path: "*", element: <NotFound /> },
-      ],
-    },
-  ],
+const router = createBrowserRouter([
   {
-    basename: "/swisston-home-essentials",
-  }
-);
+    element: <SiteLayout />,
+    children: [
+      { path: "/", element: <Index /> },
+      { path: "/shop", element: <Shop /> },
+      { path: "/product/:slug", element: <ProductPage /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

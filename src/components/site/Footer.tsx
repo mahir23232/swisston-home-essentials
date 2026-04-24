@@ -1,77 +1,99 @@
 import { Link } from "react-router-dom";
+import { Instagram, Mail } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative border-t border-border/60 mt-32">
-      <section className="container py-24 md:py-32">
-        <div className="grid md:grid-cols-12 gap-12 items-end">
-          <div className="md:col-span-7">
-            <p className="plaque-ember mb-6">N°V · Correspondence</p>
-            <h2 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight">
-              For the considered<br />
-              <span className="italic text-ember">kitchen.</span>
-            </h2>
-            <p className="font-serif italic text-pewter text-lg mt-8 max-w-md leading-relaxed">
-              Quiet dispatches. New plates, household notes, the occasional recipe.
-              Never more than once a fortnight.
+    <footer className="surface-ink relative overflow-hidden">
+      <div className="container py-24 md:py-32">
+        {/* House mark */}
+        <div className="text-center mb-20">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-background/50">
+            The House of
+          </p>
+          <p className="font-display text-[3rem] md:text-[5rem] tracking-[0.18em] font-light mt-4 text-background">
+            SWISSTON
+          </p>
+          <div className="rule-brass mx-auto mt-6 opacity-70" />
+        </div>
+
+        <div className="grid gap-14 md:grid-cols-12 border-t border-background/15 pt-16">
+          <div className="md:col-span-4 space-y-5">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/50">
+              Correspondence
             </p>
-          </div>
-          <form
-            className="md:col-span-5 space-y-4"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <div className="flex border-b border-bone/30 focus-within:border-ember transition-colors">
+            <p className="font-display text-2xl leading-snug text-background/90 max-w-xs">
+              A quarterly note from the studio — new pieces, recipes, and the slow life of a kitchen.
+            </p>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex border-b border-background/35 focus-within:border-background transition-colors max-w-sm"
+            >
               <input
                 type="email"
                 required
-                placeholder="your@address.com"
-                className="flex-1 bg-transparent py-4 text-bone placeholder:text-pewter focus:outline-none font-serif text-lg"
+                placeholder="your address"
+                className="flex-1 bg-transparent py-3 text-sm text-background placeholder:text-background/45 focus:outline-none"
               />
-              <button type="submit" className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-ember pl-4">
-                Subscribe →
+              <button
+                type="submit"
+                className="font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light pl-4 text-background hover:text-accent transition-colors"
+              >
+                Subscribe
               </button>
-            </div>
-            <p className="plaque">No noise. Unsubscribe in one click.</p>
-          </form>
-        </div>
-      </section>
+            </form>
+          </div>
 
-      <div className="rule" />
+          <div className="md:col-span-2 md:col-start-7 space-y-5">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/50">
+              Atelier
+            </p>
+            <ul className="space-y-3 text-sm text-background/80">
+              <li><Link to="/shop" className="hover:text-background transition-colors">All pieces</Link></li>
+              <li><Link to="/shop" className="hover:text-background transition-colors">Morning ritual</Link></li>
+              <li><Link to="/shop" className="hover:text-background transition-colors">Atelier accessories</Link></li>
+              <li><a href="#" className="hover:text-background transition-colors">Amazon storefront</a></li>
+            </ul>
+          </div>
 
-      <div className="container py-12 grid md:grid-cols-4 gap-10 text-sm">
-        <div>
-          <p className="font-display text-2xl tracking-tight mb-2">Swisston</p>
-          <p className="plaque">Home & Kitchen · USA</p>
+          <div className="md:col-span-2 space-y-5">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/50">
+              House
+            </p>
+            <ul className="space-y-3 text-sm text-background/80">
+              <li><Link to="/about" className="hover:text-background transition-colors">Our story</Link></li>
+              <li><Link to="/contact" className="hover:text-background transition-colors">Concierge</Link></li>
+              <li><a href="#" className="hover:text-background transition-colors">Care & guarantee</a></li>
+              <li><a href="#" className="hover:text-background transition-colors">Returns</a></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2 space-y-5">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/50">
+              Elsewhere
+            </p>
+            <ul className="space-y-3 text-sm text-background/80">
+              <li>
+                <a href="#" className="inline-flex items-center gap-2 hover:text-background transition-colors">
+                  <Instagram className="h-3.5 w-3.5" /> Instagram
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@swisston.com" className="inline-flex items-center gap-2 hover:text-background transition-colors">
+                  <Mail className="h-3.5 w-3.5" /> hello@swisston.com
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <p className="plaque mb-3">The House</p>
-          <ul className="space-y-2 text-bone/80 font-serif">
-            <li><Link to="/shop" className="hover:text-ember transition-colors">The Plates</Link></li>
-            <li><Link to="/about" className="hover:text-ember transition-colors">Provenance</Link></li>
-            <li><Link to="/contact" className="hover:text-ember transition-colors">Correspond</Link></li>
-          </ul>
-        </div>
-        <div>
-          <p className="plaque mb-3">Acquire</p>
-          <ul className="space-y-2 text-bone/80 font-serif">
-            <li><a href="#" target="_blank" rel="noreferrer noopener" className="hover:text-ember transition-colors">Amazon Storefront ↗</a></li>
-            <li><Link to="/contact" className="hover:text-ember transition-colors">Trade & Hospitality</Link></li>
-          </ul>
-        </div>
-        <div>
-          <p className="plaque mb-3">Studios</p>
-          <p className="font-serif text-bone/80 leading-relaxed">
-            Texas, USA<br />
-            Designed slowly, shipped quietly.
+
+        <div className="mt-20 pt-8 border-t border-background/15 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-6">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/45">
+            © {new Date().getFullYear()} Swisston · Home & Kitchen, USA · All rights reserved
+          </p>
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.32em] text-background/45">
+            Designed in Texas · Made for everywhere
           </p>
         </div>
-      </div>
-
-      <div className="rule" />
-
-      <div className="container py-6 flex flex-col md:flex-row justify-between gap-3">
-        <p className="plaque">© MMXXV Swisston Home & Kitchen. All editions reserved.</p>
-        <p className="plaque">Vol. II · The Index</p>
       </div>
     </footer>
   );

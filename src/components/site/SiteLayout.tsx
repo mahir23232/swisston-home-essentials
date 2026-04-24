@@ -4,14 +4,12 @@ import { Footer } from "./Footer";
 
 export const SiteLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-1 lg:pl-16 pt-12">
+      <main className="flex-1">
         <Outlet />
       </main>
-      <div className="lg:pl-16">
-        <Footer />
-      </div>
+      <Footer />
       <ScrollRestoration />
     </div>
   );

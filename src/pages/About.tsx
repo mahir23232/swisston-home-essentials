@@ -1,111 +1,124 @@
 import { Link } from "react-router-dom";
-import galleryHero from "@/assets/gallery-hero.jpg";
-import materialSteel from "@/assets/material-steel.jpg";
-import ritualFlatlay from "@/assets/ritual-flatlay.jpg";
+import { ArrowRight } from "lucide-react";
+import heroEstate from "@/assets/hero-estate.jpg";
+import materialStudy from "@/assets/material-study.jpg";
+import dining from "@/assets/dining-scene.jpg";
+import ritualPrep from "@/assets/ritual-prep.jpg";
 
 const About = () => {
   return (
     <>
-      <section className="relative min-h-[80svh] flex items-end overflow-hidden border-b border-border/60">
-        <div className="absolute inset-0">
-          <img
-            src={galleryHero}
-            alt="Dark editorial kitchen"
-            className="absolute inset-0 h-full w-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-pitch via-pitch/40 to-transparent" />
-        </div>
-        <div className="relative container pb-20 md:pb-28">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="numeral text-3xl">N°III</span>
-            <span className="rule-ember" />
-            <span className="plaque-bone">Provenance</span>
+      <section className="surface-paper relative grain pt-40 md:pt-52 pb-20 md:pb-28 border-b border-border/60">
+        <div className="container grid md:grid-cols-12 gap-y-10 md:gap-x-12 items-end">
+          <div className="md:col-span-8">
+            <p className="eyebrow-brass mb-6">The House</p>
+            <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.025em]">
+              A small house with <span className="display-italic">a long memory.</span>
+            </h1>
           </div>
-          <h1 className="font-display text-6xl md:text-8xl tracking-[-0.03em] leading-[0.9] max-w-4xl">
-            A house built<br />
-            <span className="italic text-ember">slowly,</span> on purpose.
-          </h1>
-        </div>
-      </section>
-
-      <section className="border-b border-border/60">
-        <div className="container py-32 md:py-40">
-          <div className="grid md:grid-cols-12 gap-12">
-            <div className="md:col-span-3">
-              <span className="numeral text-5xl">N°I</span>
-              <p className="plaque-ember mt-4">A Founder's Note</p>
-            </div>
-            <div className="md:col-span-8 md:col-start-5 space-y-8">
-              <p className="font-serif text-xl md:text-2xl text-bone/90 leading-[1.6] dropcap">
-                Swisston began in a single drawer. A kitchen we had inherited
-                from my grandmother — old oak cabinets, honed stone, a faucet
-                that had been there longer than anyone remembered — and a drawer
-                full of plastic gadgets that did not belong.
-              </p>
-              <p className="font-serif text-lg text-bone/80 leading-[1.7]">
-                We started Swisston to make instruments that did. Heavy in the
-                hand. Quiet on the counter. Built once and left alone. We design
-                in Texas, manufacture against a small set of standards we wrote
-                ourselves, and ship through Amazon so the buying part is simple.
-              </p>
-              <p className="font-serif text-lg text-bone/80 leading-[1.7]">
-                We add to the catalogue rarely. We retire pieces only when they
-                no longer earn their place. We do not run sales. The price you
-                see is the price the object is worth.
-              </p>
-              <div className="pt-6 flex items-center gap-6">
-                <span className="rule-ember" />
-                <p className="plaque">The Founder · Austin, Texas</p>
-              </div>
-            </div>
+          <div className="md:col-span-4">
+            <p className="text-foreground/70 leading-relaxed max-w-sm md:ml-auto">
+              Swisston is a Texas studio making heirloom-grade kitchen objects for people who
+              notice these things — and who plan to keep them for a long time.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border/60 surface-pitch">
-        <div className="container py-24 md:py-32">
-          <div className="text-center mb-20">
-            <span className="numeral text-5xl">N°II</span>
-            <p className="plaque-ember mt-4">The House Codes</p>
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight mt-6">
-              Five things we believe.
+      <section className="container py-28 md:py-40 grid md:grid-cols-12 gap-y-12 md:gap-x-16">
+        <div className="md:col-span-3">
+          <p className="eyebrow mb-5">Our standing</p>
+          <div className="rule-brass" />
+        </div>
+        <div className="md:col-span-8 md:col-start-5">
+          <p className="dropcap font-display text-xl md:text-[1.4rem] leading-[1.45] text-foreground/95">
+            We come from the conviction that everyday objects deserve the same care that an
+            architect gives a façade. The whipper on your counter at 7am is, in its small way,
+            doing the work of <span className="display-italic">setting a tone</span> — for the morning, for the
+            kitchen, for the kind of life you mean to live in this house.
+          </p>
+          <p className="mt-8 text-foreground/75 leading-relaxed">
+            So we make a small number of pieces. We engineer each one once, then refuse to
+            redesign it for the sake of a season. We choose materials that age — stainless that
+            patinas softly, brass that earns a hand-finish, linen that softens with washing.
+            We work with one foundry in central Texas and one finishing house outside Florence,
+            and we keep our catalogue small so we can keep our standards high.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid md:grid-cols-2">
+        <img src={materialStudy} alt="Travertine and oak" loading="lazy" className="w-full aspect-[4/3] md:aspect-[5/4] object-cover" />
+        <img src={dining} alt="A long set table at golden hour" loading="lazy" className="w-full aspect-[4/3] md:aspect-[5/4] object-cover" />
+      </section>
+
+      <section className="surface-stone relative grain">
+        <div className="container py-28 md:py-40">
+          <div className="max-w-2xl mb-20">
+            <p className="eyebrow-brass mb-5">N°02 — The Principles</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
+              Six rules <span className="display-italic">we keep returning to.</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-5 gap-10">
+
+          <div className="grid md:grid-cols-2 gap-x-16 gap-y-14">
             {[
-              ["01", "Built once.", "Heavy-gauge stainless. Reinforced mechanisms. No wear-it-out plastics."],
-              ["02", "Quiet design.", "No logo on the object. The work is enough."],
-              ["03", "Slow catalogue.", "Few plates, kept for years. New work added rarely."],
-              ["04", "No sales.", "The price is the price. The object is worth it or it is not."],
-              ["05", "True service.", "Real humans. 10-year warranty. Quiet returns."],
-            ].map(([no, h, b]) => (
-              <div key={no} className="border-t border-border/60 pt-6">
-                <span className="numeral text-3xl">{no}</span>
-                <h3 className="font-display text-2xl tracking-tight mt-4">{h}</h3>
-                <p className="font-serif italic text-pewter text-sm mt-3 leading-relaxed">{b}</p>
-              </div>
+              { n: "01", t: "One piece, made once.", b: "We engineer for permanence, not for a season's catalogue." },
+              { n: "02", t: "Heavy in the hand.",     b: "Weight is honesty. Plastic, almost always, is not." },
+              { n: "03", t: "Quiet in the room.",     b: "An object that earns the counter does not need to shout." },
+              { n: "04", t: "Materials that age.",    b: "Brass patinas. Stainless softens. Linen washes well." },
+              { n: "05", t: "Made by people.",        b: "One foundry in Texas. One finishing house in Italy." },
+              { n: "06", t: "A small catalogue.",     b: "We would rather make ten things well than a hundred passably." },
+            ].map((p) => (
+              <article key={p.n} className="grid grid-cols-[3rem_1fr] gap-6">
+                <span className="font-display text-2xl text-brass">{p.n}</span>
+                <div>
+                  <h3 className="font-display text-2xl mb-2">{p.t}</h3>
+                  <p className="text-foreground/75 leading-relaxed">{p.b}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 border-b border-border/60">
-        <img src={materialSteel} alt="Brushed steel material study" className="w-full aspect-[4/5] object-cover" />
-        <img src={ritualFlatlay} alt="Flat-lay of kitchen instruments" className="w-full aspect-[4/5] object-cover" />
+      <section className="container py-28 md:py-40 grid md:grid-cols-12 gap-y-12 md:gap-x-16 items-center">
+        <div className="md:col-span-6">
+          <img src={ritualPrep} alt="Hands at work in a sunlit kitchen" loading="lazy" className="w-full aspect-[4/5] object-cover figure-deep" />
+        </div>
+        <div className="md:col-span-5 md:col-start-8">
+          <p className="eyebrow-brass mb-5">N°03 — Provenance</p>
+          <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-8">
+            Designed in Austin. <span className="display-italic">Finished in Florence.</span>
+          </h2>
+          <div className="rule-brass mb-8" />
+          <p className="text-foreground/75 leading-relaxed">
+            Every Swisston piece is drawn in our Austin studio, prototyped in our Texas
+            workshop, and finished by a small family-run atelier outside Florence that has been
+            doing the work of polishing fine metal for four generations. Then it travels back to
+            us, gets inspected by a human, and goes into a linen-wrapped box.
+          </p>
+          <p className="mt-5 text-foreground/75 leading-relaxed">
+            That is the entire supply chain. We tell you because, in this category, that is
+            unusual — and because it is the reason these pieces feel the way they feel.
+          </p>
+        </div>
       </section>
 
-      <section>
-        <div className="container py-32 text-center">
-          <p className="plaque-ember mb-6">N°III · Acquire</p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-tight max-w-3xl mx-auto leading-[0.95]">
-            Begin with <span className="italic text-ember">one plate.</span>
-          </h2>
-          <p className="font-serif italic text-pewter text-lg mt-8 max-w-md mx-auto">
-            Most houses begin with the whipper. Most stay.
+      <section className="relative overflow-hidden">
+        <img src={heroEstate} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-foreground/65" />
+        <div className="relative container py-32 md:py-44 text-center text-background">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.42em] text-background/60 mb-6">
+            The next chapter
           </p>
-          <div className="mt-12 flex flex-wrap justify-center gap-5">
-            <Link to="/shop" className="btn-bone">Enter the Index</Link>
-            <Link to="/contact" className="btn-link">Trade enquiries →</Link>
+          <h2 className="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] max-w-3xl mx-auto">
+            Begin with a single, <span className="display-italic">considered piece.</span>
+          </h2>
+          <div className="mt-12">
+            <Link to="/shop" className="bg-background text-foreground px-9 py-4 font-mono text-[0.7rem] uppercase tracking-[0.28em] font-light hover:bg-background/90 transition-colors inline-flex items-center gap-3">
+              Enter the Atelier <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
         </div>
       </section>

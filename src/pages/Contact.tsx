@@ -1,96 +1,146 @@
 import { useState } from "react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
 
+const faqs = [
+  { q: "Where do Swisston pieces ship from?", a: "Every order is fulfilled through Amazon, with free Prime delivery to all fifty states." },
+  { q: "Is the matte ink finish dishwasher safe?", a: "The body and components are dishwasher-safe. We recommend a hand wash for the powder-coated Ivory edition to preserve its hand-applied finish." },
+  { q: "What is the lifetime mechanical guarantee?", a: "Every Swisston piece is guaranteed for life against mechanical failure. If the lever or seal ever fails under normal use, we replace the piece — no receipt required." },
+  { q: "Do you offer linen-wrapped gifting?", a: "Yes. Every piece arrives wrapped in unbleached linen, inside a recycled-board box, with a hand-tied jute cord. No additional cost." },
+  { q: "Where are Swisston pieces made?", a: "Designed in Austin, Texas. Prototyped in our central Texas workshop. Polished and finished by a fourth-generation atelier outside Florence." },
+  { q: "Can I order in volume for a property or restaurant?", a: "Yes. Reach our concierge directly at hello@swisston.com — we respond personally, usually within a day." },
+];
+
 const Contact = () => {
-  const [sent, setSent] = useState(false);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast("Correspondence received. We reply within one working day.");
-    setSent(true);
-    (e.target as HTMLFormElement).reset();
+    setSubmitting(true);
+    setTimeout(() => {
+      (e.target as HTMLFormElement).reset();
+      setSubmitting(false);
+      toast.success("Note received. We'll be in touch shortly.");
+    }, 700);
   };
 
   return (
     <>
-      <section className="border-b border-border/60">
-        <div className="container py-24 md:py-32">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="numeral text-3xl">N°IV</span>
-            <span className="rule-ember" />
-            <span className="plaque-bone">Correspond</span>
+      <section className="surface-paper relative grain pt-40 md:pt-52 pb-20 md:pb-28 border-b border-border/60">
+        <div className="container grid md:grid-cols-12 gap-y-10 md:gap-x-12 items-end">
+          <div className="md:col-span-8">
+            <p className="eyebrow-brass mb-6">Concierge</p>
+            <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.025em]">
+              A note to the <span className="display-italic">studio.</span>
+            </h1>
           </div>
-          <h1 className="font-display text-6xl md:text-8xl tracking-[-0.03em] leading-[0.92] max-w-4xl">
-            Write to the<br />
-            <span className="italic text-ember">house.</span>
-          </h1>
-          <p className="font-serif italic text-pewter text-lg mt-10 max-w-xl leading-relaxed">
-            Concierge for collectors, hospitality buyers, and the occasional
-            household question. We reply personally, within one working day.
-          </p>
+          <div className="md:col-span-4">
+            <p className="text-foreground/70 leading-relaxed max-w-sm md:ml-auto">
+              Real people in Austin, Texas. We answer personally — usually within a day, often
+              within an hour.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div className="container py-20 md:py-24 grid md:grid-cols-12 gap-16">
-          <form onSubmit={onSubmit} className="md:col-span-7 space-y-10">
+      <section className="container py-24 md:py-32 grid md:grid-cols-12 gap-y-16 md:gap-x-16">
+        <div className="md:col-span-4 space-y-12">
+          {[
+            { i: Mail,    t: "By note",       v: "hello@swisston.com" },
+            { i: Clock,   t: "Studio hours",  v: "Monday — Friday · 9 to 6 CT" },
+            { i: MapPin,  t: "The studio",    v: "Austin, Texas · United States" },
+          ].map(({ i: Icon, t, v }) => (
+            <div key={t}>
+              <Icon className="h-4 w-4 text-brass mb-4" strokeWidth={1.25} />
+              <p className="eyebrow mb-2">{t}</p>
+              <p className="font-display text-xl">{v}</p>
+            </div>
+          ))}
+
+          <div className="pt-8 border-t border-border/60">
+            <p className="eyebrow mb-4">A small promise</p>
+            <p className="text-foreground/75 leading-relaxed text-sm">
+              We don't run a help-desk. Every note that comes through this form is read by
+              someone in the studio, and answered personally.
+            </p>
+          </div>
+        </div>
+
+        <form onSubmit={onSubmit} className="md:col-span-7 md:col-start-6 space-y-8">
+          <div className="grid sm:grid-cols-2 gap-8">
             {[
-              { label: "Your name", name: "name", type: "text" },
-              { label: "Your address", name: "email", type: "email" },
-              { label: "Subject", name: "subject", type: "text" },
+              { id: "name",    label: "Your name",      type: "text",  req: true },
+              { id: "email",   label: "Your email",     type: "email", req: true },
             ].map((f) => (
-              <div key={f.name}>
-                <label className="plaque mb-3 block">{f.label}</label>
+              <div key={f.id}>
+                <label htmlFor={f.id} className="block eyebrow mb-3">{f.label}</label>
                 <input
-                  required
+                  id={f.id}
+                  name={f.id}
                   type={f.type}
-                  name={f.name}
-                  className="w-full bg-transparent border-b border-bone/30 focus:border-ember py-3 text-bone font-serif text-lg focus:outline-none transition-colors"
+                  required={f.req}
+                  className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors"
                 />
               </div>
             ))}
-            <div>
-              <label className="plaque mb-3 block">Your note</label>
-              <textarea
-                required
-                name="message"
-                rows={5}
-                className="w-full bg-transparent border-b border-bone/30 focus:border-ember py-3 text-bone font-serif text-lg focus:outline-none transition-colors resize-none"
-              />
-            </div>
-            <button type="submit" className="btn-bone">
-              {sent ? "Sent — thank you" : "Send correspondence →"}
-            </button>
-          </form>
+          </div>
+          <div>
+            <label htmlFor="subject" className="block eyebrow mb-3">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors"
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block eyebrow mb-3">Your note</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={6}
+              className="w-full bg-transparent border-b border-foreground/30 focus:border-foreground py-3 text-base focus:outline-none transition-colors resize-none"
+            />
+          </div>
+          <button type="submit" disabled={submitting} className="btn-ink disabled:opacity-60">
+            {submitting ? "Sending…" : "Send the note"}
+          </button>
+        </form>
+      </section>
 
-          <aside className="md:col-span-4 md:col-start-9 space-y-12">
-            <div>
-              <p className="plaque-ember mb-3">Studio</p>
-              <p className="font-serif text-bone/90 leading-relaxed">
-                Swisston Atelier<br />
-                Austin, Texas · USA
-              </p>
-            </div>
-            <div>
-              <p className="plaque-ember mb-3">Concierge</p>
-              <a href="mailto:hello@swisston.com" className="font-serif text-bone hover:text-ember transition-colors">
-                hello@swisston.com
-              </a>
-            </div>
-            <div>
-              <p className="plaque-ember mb-3">Hours</p>
-              <p className="font-serif text-bone/90 leading-relaxed">
-                Monday — Friday<br />
-                09:00 — 18:00 CT
-              </p>
-            </div>
-            <div>
-              <p className="plaque-ember mb-3">Acquire</p>
-              <a href="#" target="_blank" rel="noreferrer noopener" className="font-serif text-bone hover:text-ember transition-colors">
-                Amazon storefront ↗
-              </a>
-            </div>
-          </aside>
+      <section className="surface-stone relative grain border-t border-border/60">
+        <div className="container py-24 md:py-32 grid md:grid-cols-12 gap-y-10 md:gap-x-16">
+          <div className="md:col-span-4">
+            <p className="eyebrow-brass mb-5">N°02 — Frequently asked</p>
+            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
+              Anything <span className="display-italic">to know.</span>
+            </h2>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <ul className="divide-y divide-foreground/15 border-y border-foreground/15">
+              {faqs.map((f, i) => {
+                const open = openIdx === i;
+                return (
+                  <li key={f.q}>
+                    <button
+                      onClick={() => setOpenIdx(open ? null : i)}
+                      className="w-full text-left py-6 flex items-start justify-between gap-6 group"
+                    >
+                      <span className="font-display text-xl md:text-2xl leading-snug pr-4">{f.q}</span>
+                      <span className="font-mono text-xs text-brass mt-2 shrink-0">{open ? "—" : "+"}</span>
+                    </button>
+                    <div className={`grid transition-all duration-500 ease-out ${open ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}>
+                      <div className="overflow-hidden">
+                        <p className="text-foreground/75 leading-relaxed max-w-xl">{f.a}</p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </section>
     </>
