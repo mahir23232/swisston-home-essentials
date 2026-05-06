@@ -69,10 +69,11 @@ export const products: Product[] = [
     amazonAsin: "",
 
     images: [
+      whipperLifestyle,
+      whipperFeatures,
       productPortrait,
       productHero,
       ritualMorning,
-      productSpec,
       detailCream,
       dining,
     ],
@@ -132,6 +133,8 @@ export const products: Product[] = [
     amazonAsin: "",
 
     images: [
+      whipperFeatures,
+      whipperLifestyle,
       productHero,
       ritualMorning,
       dining,
