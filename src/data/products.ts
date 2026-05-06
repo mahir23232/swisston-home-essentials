@@ -5,6 +5,7 @@ import ritualMorning from "@/assets/ritual-morning.jpg";
 import ritualPrep from "@/assets/ritual-prep.jpg";
 import detailCream from "@/assets/detail-cream.jpg";
 import dining from "@/assets/dining-scene.jpg";
+import chickenShredder1 from "@/assets/chicken-shredder-1.jpeg";
 
 /**
  * ─────────────────────────────────────────────────────────────────────
