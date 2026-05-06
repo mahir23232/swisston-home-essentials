@@ -6,6 +6,8 @@ import ritualPrep from "@/assets/ritual-prep.jpg";
 import detailCream from "@/assets/detail-cream.jpg";
 import dining from "@/assets/dining-scene.jpg";
 import chickenShredder1 from "@/assets/chicken-shredder-1.jpeg";
+import whipperLifestyle from "@/assets/whipper-lifestyle.jpeg";
+import whipperFeatures from "@/assets/whipper-features.png";
 
 /**
  * ─────────────────────────────────────────────────────────────────────
@@ -67,10 +69,11 @@ export const products: Product[] = [
     amazonAsin: "",
 
     images: [
+      whipperLifestyle,
+      whipperFeatures,
       productPortrait,
       productHero,
       ritualMorning,
-      productSpec,
       detailCream,
       dining,
     ],
@@ -130,6 +133,8 @@ export const products: Product[] = [
     amazonAsin: "",
 
     images: [
+      whipperFeatures,
+      whipperLifestyle,
       productHero,
       ritualMorning,
       dining,
