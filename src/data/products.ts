@@ -5,6 +5,7 @@ import ritualMorning from "@/assets/ritual-morning.jpg";
 import ritualPrep from "@/assets/ritual-prep.jpg";
 import detailCream from "@/assets/detail-cream.jpg";
 import dining from "@/assets/dining-scene.jpg";
+import chickenShredder1 from "@/assets/chicken-shredder-1.jpeg";
 
 /**
  * ─────────────────────────────────────────────────────────────────────
@@ -218,6 +219,59 @@ export const products: Product[] = [
 
     manualRating: 4.9,
     manualReviewCount: 318,
+  },
+
+  {
+    id: "p4",
+    slug: "chicken-shredder",
+    name: "The Shredder, N°01",
+    tagline: "A prepared kitchen, in seconds.",
+    category: "Kitchen Atelier",
+    collection: "The Prepared Kitchen",
+    price: "$29",
+    ritualLine: "For the meal prep that turns Sunday into the rest of the week.",
+
+    amazonUrl: "#",
+    amazonAsin: "",
+
+    images: [
+      chickenShredder1,
+      ritualPrep,
+    ],
+
+    summary:
+      "A two-disc shredding tool that turns a roasted chicken into perfect, even strands in under a minute. Built for the prepared kitchen — meal-prep Sundays, weeknight tacos, salads, sandwiches, soups.",
+
+    description: [
+      "Replace this description with your own copy whenever you're ready. The Shredder, N°01 is the quiet workhorse of the prepared kitchen — a tool that turns the slow, sticky work of pulling chicken by hand into a clean, satisfying half-minute motion.",
+      "A non-slip base disc cradles the bird. A clear lid with hardened teeth comes down on top. Two turns of the wrist and you have evenly shredded chicken, beef, or pork — ready for tacos, salads, sandwiches, soups, or the week ahead.",
+    ],
+
+    highlights: [
+      "Restaurant-quality shred in under a minute",
+      "Non-slip base, dishwasher-safe components",
+      "Compatible with chicken, beef, and pork",
+      "Stores flat — one disc nests inside the other",
+    ],
+
+    features: [
+      "Two-piece interlocking shredding system",
+      "Hardened, food-safe interlocking teeth",
+      "Non-slip rubber feet for counter stability",
+      "Dishwasher safe, top rack",
+      "BPA-free construction",
+    ],
+    materials: "Food-grade hardened polymer · Non-slip rubber",
+    dimensions: "26 cm (Ø) · 7 cm (h)",
+    capacity: "Holds a full rotisserie chicken",
+    inBox: [
+      "Shredder base disc",
+      "Shredder lid disc",
+      "Linen-bound use guide",
+    ],
+
+    manualRating: 4.7,
+    manualReviewCount: 892,
   },
 ];
 
